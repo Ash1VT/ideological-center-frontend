@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/app/static/css/main.f40f25d9.css",
+    "main.js": "/app/static/js/main.23527192.js",
+    "static/js/453.ed3810f9.chunk.js": "/app/static/js/453.ed3810f9.chunk.js",
+    "static/media/Monotype-Corsiva-Regular.ttf": "/app/static/media/Monotype-Corsiva-Regular.a4a69185d627d4427a50.ttf",
+    "static/media/Monotype-Corsiva-Regular-Italic.ttf": "/app/static/media/Monotype-Corsiva-Regular-Italic.27252dc548c84c9441d2.ttf",
+    "static/media/Monotype-Corsiva-Bold.ttf": "/app/static/media/Monotype-Corsiva-Bold.d63cff36a125f39765bb.ttf",
+    "static/media/Monotype-Corsiva-Bold-Italic.ttf": "/app/static/media/Monotype-Corsiva-Bold-Italic.3482f8341a679bcfa703.ttf",
+    "index.html": "/app/index.html",
+    "main.f40f25d9.css.map": "/app/static/css/main.f40f25d9.css.map",
+    "main.23527192.js.map": "/app/static/js/main.23527192.js.map",
+    "453.ed3810f9.chunk.js.map": "/app/static/js/453.ed3810f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f40f25d9.css",
+    "static/js/main.23527192.js"
+  ]
+}

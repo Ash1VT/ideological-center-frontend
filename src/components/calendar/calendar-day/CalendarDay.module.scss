@@ -1,0 +1,26 @@
+.container {
+    .day {
+        padding: 5px;
+
+    }
+
+    .workday {
+
+    }
+
+    .weekend {
+        color: red;
+    }
+
+    .holiday {
+        color: red;
+    }
+
+    .prevMonthDay {
+        color: #aaa;
+    }
+
+    .nextMonthDay {
+        color: #ccc;
+    }
+}

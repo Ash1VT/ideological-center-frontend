@@ -1,0 +1,15 @@
+.container {
+    user-select: none;
+    cursor: pointer;
+    
+    .month {
+        font-family: 'Times New Roman', Times, serif;
+        text-transform: uppercase;
+        padding: 5px;
+
+    }
+
+    .selected {
+        color: green;
+    }
+}

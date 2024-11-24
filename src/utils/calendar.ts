@@ -21,54 +21,54 @@ export const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',
 export function getSeasonImageSrc(month: Number): string {
     
     if (month === 0) {
-        return '/images/calendar/winter2.gif';
+        return './images/calendar/winter2.gif';
     }
 
     if (month === 1) {
-        return '/images/calendar/winter3.gif';
+        return './images/calendar/winter3.gif';
     }
 
     if (month === 2) {
-        return '/images/calendar/spring1.gif';
+        return './images/calendar/spring1.gif';
     }
 
     if (month === 3) {
-        return '/images/calendar/spring2.gif';
+        return './images/calendar/spring2.gif';
     }
 
     if (month === 4) {
-        return '/images/calendar/spring3.gif';
+        return './images/calendar/spring3.gif';
     }
 
     if (month === 5) {
-        return '/images/calendar/summer1.gif';
+        return './images/calendar/summer1.gif';
     }
 
     if (month === 6) {
-        return '/images/calendar/summer2.gif';
+        return './images/calendar/summer2.gif';
     }
 
     if (month === 7) {
-        return '/images/calendar/summer3.gif';
+        return './images/calendar/summer3.gif';
     }
 
     if (month === 8) {
-        return '/images/calendar/autumn1.gif';
+        return './images/calendar/autumn1.gif';
     }
 
     if (month === 9) {
-        return '/images/calendar/autumn2.gif';
+        return './images/calendar/autumn2.gif';
     }
 
     if (month === 10) {
-        return '/images/calendar/autumn3.gif';
+        return './images/calendar/autumn3.gif';
     }
 
     if (month === 11) {
-        return '/images/calendar/winter1.gif';
+        return './images/calendar/winter1.gif';
     }
 
-    return '/images/calendar/autumn.gif';
+    return './images/calendar/autumn.gif';
 }
 
 // Получение количества дней в месяце

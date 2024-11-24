@@ -1,0 +1,62 @@
+.container {
+    background-color: #007bff;
+    color: #fff;
+    min-width: 300px;
+    max-width: 300px;
+    grid-column: 1;
+    grid-row: 1;
+    position: absolute;
+    height: 100%;
+    z-index: -1;
+    border-radius: 20px 0 0 20px;
+
+    .card {
+        padding: 20px 5px 35px 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .date {
+            font-family: 'Kanit', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+            .day {
+                font-size: 150px;
+                font-weight: 700;
+            }
+
+            .month {
+                font-size: 30px;
+                text-transform: uppercase;
+                position: relative;
+                bottom: 60px;
+
+            }
+
+            .weekday {
+                font-size: 15px;
+                text-transform: uppercase;
+                position: relative;
+                bottom: 65px;
+            }
+        }
+
+        .events {
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+            padding: 0;
+            max-width: 200px;
+
+            .event {
+                font-family: 'Kanit', sans-serif;
+                font-weight: 600;
+                font-size: 16px;
+            }
+        }
+    }
+}

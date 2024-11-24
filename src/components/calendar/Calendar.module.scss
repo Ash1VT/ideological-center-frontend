@@ -1,19 +1,26 @@
 .container {
+    position: relative;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-
-    padding: 20px;
-
+    // justify-content: center;
+    // align-items: center;
+    // overflow: hidden;
+    // padding: 20px;
     border-radius: 20px;
-    box-shadow:     0 -4px 6px rgba(0, 0, 0, 0.1), /* Тень сверху */
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1), /* Тень сверху */
                 0 4px 6px rgba(0, 0, 0, 0.1),  /* Тень снизу */ /* Основная тень */
-              0 1px 3px rgba(0, 0, 0, 0.06); /* Дополнительная мягкая тень */
+                0 1px 3px rgba(0, 0, 0, 0.06); /* Дополнительная мягкая тень */
     transition: box-shadow 0.3s ease; /* Плавный эффект при наведении */
-    
+    z-index: 0;
+
     .calendar {
+        position: relative;
+        padding: 20px;
+        z-index: 1;
+        max-width: 540px;
+        background-color: #fff;
+        // border-radius: 20px;
+
         .header {
             display: flex;
             flex-direction: column;
@@ -26,6 +33,7 @@
                 align-items: center;
                 align-self: flex-end;
                 column-gap: 10px;
+
                 .arrow_container {
                     
                     .arrow_button {
@@ -59,28 +67,33 @@
                 flex-direction: row;
                 justify-content: space-between;
                 margin-top: 20px;
-
-                .month {
-                }
             }
 
             .season {
                 // position: relative;
                 display: flex;
                 justify-content: center;
-                align-items: center; 
-                max-width: 600px;
-                max-height: 170px;
-                overflow: hidden;
+                align-items: center;
                 
+                .image_container {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
 
-                .image {
-                    max-width: 100%;
-                    max-height: 100%;
-                    opacity: 1;
-                    filter: blur(0);
-                    transform: scale(1);
-                    animation: fade-in 0.6s ease-in-out;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    min-height: 170px;
+                    max-height: 170px;
+
+
+                    .image {
+                        max-width: 100%;
+                        max-height: 100%;
+                        opacity: 1;
+                        filter: blur(0);
+                        transform: scale(1);
+                        animation: fade-in 0.6s ease-in-out;
+                    }
                 }
             }
         } 

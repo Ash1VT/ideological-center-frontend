@@ -6,10 +6,17 @@ export enum CalendarDayType {
     NextMonthDay = 'nextMonthDay',
 }
 
-export type CalendarDay = {
-    idx: number
-    day: number
+export type CalendarDayModel = {
+    id: number
+    dayNum: number
+    weekDayNum: number
+    monthNum: number
     types: CalendarDayType[]
 }
 
-export type CalendarDayProps = CalendarDay
+export type CalendarDayProps = {
+    day: CalendarDayModel
+    isSelected: boolean
+    onDaySelected: (day: CalendarDayModel) => void
+    hasEvents: boolean
+}

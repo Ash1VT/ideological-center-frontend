@@ -4,25 +4,41 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import styles from './Calendar.module.scss'
 import { CalendarProps } from './Calendar.props';
 import CalendarDay from './calendar-day/CalendarDay';
-import { CalendarDay as CalendarDayIdiNa, CalendarDayProps, CalendarDayType } from './calendar-day/CalendarDay.props';
+import { CalendarDayModel, CalendarDayProps, CalendarDayType } from './calendar-day/CalendarDay.props';
 import Holidays from 'date-holidays';
-import { getDaysInMonth, getFirstDayOfMonth, getMonthDays, getMonthName, getSeasonImageSrc } from '../../utils/calendar';
+import { getDaysInMonth, getFirstDayOfMonth, getMonthDays, getMonthName, getSeasonImageSrc, weekDays, weekDaysShortcuts } from '../../utils/calendar';
 import CalendarMonth from './calendar-month/CalendarMonth';
-
-
-const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-const monthShortcuts = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+import EventsCard from './events-card/EventsCard';
+import { EventShortModel } from './events-card/EventCard.types';
+import { AnimatePresence, motion } from 'framer-motion';
 
 
 const Calendar = ({month, year}: CalendarProps) => {
+    const events: EventShortModel[] = [ 
+        {
+            id: 1,
+            title: 'Дзень Дзень Дзень ДзеньДзень ДзеньДзень Дзень',
+        },
+        {
+            id: 2,
+            title: 'Event 2',
+        },
+        {
+            id: 3,
+            title: 'Event 3',
+        },
+        {
+            id: 4,
+            title: 'Event 4',
+        },
+    ]
+
     const [curMonth, setCurMonth] = useState(month);
     const [curYear, setCurYear] = useState(year);
-    const [isLoading, setIsLoading] = useState(true);
-    const [monthsData, setMonthsData] = useState<{ month: number; days: CalendarDayIdiNa[] }[]>([]);
+    const [selectedDay, setSelectedDay] = useState<CalendarDayModel | null>(null);
+    const [monthsData, setMonthsData] = useState<{ month: number; days: CalendarDayModel[] }[]>([]);
 
     useEffect(() => {
-        setIsLoading(true);
-
         Promise.all(
             Array.from({ length: 12 }, (_, i) => ({
                          month: i,
@@ -30,29 +46,40 @@ const Calendar = ({month, year}: CalendarProps) => {
             }))
         ).then((data) => {
             setMonthsData(data);
-
-            setTimeout(() => {
-                setIsLoading(false);
-            }, 200)
         });
     }, [curYear]);
 
     const onMonthSelected = (month: number) => {
+        setSelectedDay(null);
         setCurMonth(month);
     }
 
+    const onDaySelected = (day: CalendarDayModel) => {
+        if (selectedDay?.id === day.id) {
+            setSelectedDay(null);
+            return;
+        }
+
+        setSelectedDay(day);
+    }
+
     const onClickNextYear = () => {
+        setSelectedDay(null);
         setCurYear(curYear + 1);
     }
 
     const onClickPrevYear = () => {
+        setSelectedDay(null);
         setCurYear(curYear - 1);
     }
 
+    const calendarBorderStyle = {
+        borderRadius: selectedDay ? '0 20px 20px 0' : '20px 20px 20px 20px'
+    }
+
     return (
-        <div className={styles.container}>
-            {isLoading ? <div>Loading...</div> :
-            (<div className={styles.calendar}>
+        <div className={styles.container} style={calendarBorderStyle}>
+            <div className={styles.calendar} style={calendarBorderStyle}>
                 <div className={styles.header}>
                     <div className={styles.year_container}>
                         <div className={styles.arrow_container}>
@@ -61,7 +88,7 @@ const Calendar = ({month, year}: CalendarProps) => {
                             </button>
                         </div>
                         <div className={styles.year}>
-                          {curYear}
+                        {curYear}
                         </div>
                         <div className={styles.arrow_container}>
                             <button className={styles.arrow_button} onClick={onClickNextYear}>
@@ -70,19 +97,21 @@ const Calendar = ({month, year}: CalendarProps) => {
                         </div>
                     </div>
                     <div className={styles.monthes}>
-                      {monthsData.map(data => 
-                        <CalendarMonth month={data.month} isSelected={curMonth === data.month} onMonthSelected={onMonthSelected}/>
-                      )}
+                    {monthsData.map(data => 
+                        <CalendarMonth key={data.month} month={data.month} isSelected={curMonth === data.month} onMonthSelected={onMonthSelected}/>
+                    )}
                     </div>
                     <div className={styles.season}>
-                        <img key={curMonth} className={styles.image} src={getSeasonImageSrc(curMonth)} alt='season'/>
+                        <div className={styles.image_container}>
+                            <img key={curMonth} className={styles.image} src={getSeasonImageSrc(curMonth)} alt='season'/>
+                        </div>
                     </div>
                 </div>
                 <div className={styles.body}>
                     <div className={styles.weekdays}>
                         {
-                            weekDays.map(day => 
-                                <div className={styles.weekday}>{day}</div>
+                            weekDaysShortcuts.map(day => 
+                                <div key={day} className={styles.weekday}>{day}</div>
                             )    
                         }
                     </div>
@@ -99,15 +128,25 @@ const Calendar = ({month, year}: CalendarProps) => {
                             <div key={data.month} className={styles.month}>
                                 <div className={styles.days}>
                                     {data.days.map((day) => (
-                                        <CalendarDay key={`${data.month}.${day.idx}`} idx={day.idx} day={day.day} types={day.types} />
+                                        <CalendarDay key={`${data.month}.${day.id}`} 
+                                                    day={day} 
+                                                    isSelected={day.id === selectedDay?.id}
+                                                    hasEvents={true}
+                                                    onDaySelected={onDaySelected}
+                                                    />
                                     ))}
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
-            </div>)
-        } 
+            </div>
+            <AnimatePresence>
+                {selectedDay && <EventsCard 
+                                    key='event'
+                                    events={events}
+                                    day={selectedDay}/>}
+            </AnimatePresence>
         </div>
     )
 }

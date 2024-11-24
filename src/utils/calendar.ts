@@ -1,60 +1,74 @@
 import Holidays from "date-holidays";
-import { CalendarDay, CalendarDayType } from "../components/calendar/calendar-day/CalendarDay.props";
+import { CalendarDayModel, CalendarDayType } from "../components/calendar/calendar-day/CalendarDay.props";
 
 const hd = new Holidays();
 hd.init('BY');
 
+export const monthesShortcuts: string[] = [
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+];
+
+export const monthes: string[] = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+];
+
+export const weekDaysShortcuts = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+export const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+
 export function getSeasonImageSrc(month: Number): string {
     
     if (month === 0) {
-        return './autumn.gif';
+        return '/images/calendar/winter2.gif';
     }
 
     if (month === 1) {
-        return './autumn.gif';
+        return '/images/calendar/winter3.gif';
     }
 
     if (month === 2) {
-        return './autumn.gif';
+        return '/images/calendar/spring1.gif';
     }
 
     if (month === 3) {
-        return './autumn.gif';
+        return '/images/calendar/spring2.gif';
     }
 
     if (month === 4) {
-        return './autumn.gif';
+        return '/images/calendar/spring3.gif';
     }
 
     if (month === 5) {
-        return './autumn.gif';
+        return '/images/calendar/summer1.gif';
     }
 
     if (month === 6) {
-        return './autumn.gif';
+        return '/images/calendar/summer2.gif';
     }
 
     if (month === 7) {
-        return './autumn.gif';
+        return '/images/calendar/summer3.gif';
     }
 
     if (month === 8) {
-        return './autumn.gif';
+        return '/images/calendar/autumn1.gif';
     }
 
     if (month === 9) {
-        return './autumn2.gif';
+        return '/images/calendar/autumn2.gif';
     }
 
     if (month === 10) {
-        return './autumn3.gif';
+        return '/images/calendar/autumn3.gif';
     }
 
     if (month === 11) {
-        return './autumn2.gif';
+        return '/images/calendar/winter1.gif';
     }
 
-    return './autumn.gif';
+    return '/images/calendar/autumn.gif';
 }
 
 // Получение количества дней в месяце
@@ -69,30 +83,28 @@ export const getFirstDayOfMonth = (year: number, month: number): number => {
 };
 
 export const getMonthShortName = (month: number): string => {
-    const monthNames: string[] = [
-        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-    ];
-  
+ 
     if (month < 0 || month > 11) {
         throw new Error("Month must be between 0 and 11.");
     }
   
-    return monthNames[month];
+    return monthesShortcuts[month];
 }
 // Получение названия месяца
 export const getMonthName = (month: number): string => {
-    const monthNames: string[] = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-    ];
-  
     if (month < 0 || month > 11) {
         throw new Error("Month must be between 0 and 11.");
     }
   
-    return monthNames[month];
+    return monthes[month];
 };
+
+export const getWeekDayName = (day: number): string => {
+    if (day === 0) {
+        return weekDays[6];
+    }
+    return weekDays[day-1];
+}
 
 export const isHoliday = (day: number, month: number, year: number): boolean => {
     const date = new Date(year, month, day);
@@ -107,7 +119,7 @@ export const isWeekend = (day: number, month: number, year: number): boolean => 
     return date.getDay() === 6 || date.getDay() === 0;
 }
 
-const getDay = (idx: number, day: number, month: number, year: number, defaultType: CalendarDayType): CalendarDay => {
+const getDay = (id: number, day: number, month: number, year: number, defaultType: CalendarDayType): CalendarDayModel => {
     const dayTypes = [defaultType];
 
     if (isHoliday(day, month, year)) {
@@ -123,13 +135,15 @@ const getDay = (idx: number, day: number, month: number, year: number, defaultTy
     }
 
     return {
-        idx,
-        day: day,
+        id,
+        dayNum: day,
+        weekDayNum: new Date(year, month, day).getDay(),
+        monthNum: month,
         types: dayTypes
     }
 }
 
-export const getMonthDays = (month: number, year: number): CalendarDay[] => {
+export const getMonthDays = (month: number, year: number): CalendarDayModel[] => {
 
     const daysInMonth = getDaysInMonth(year, month);
     const firstDayOfMonth = getFirstDayOfMonth(year, month);
@@ -141,28 +155,29 @@ export const getMonthDays = (month: number, year: number): CalendarDay[] => {
     const daysInPrevMonth: number = getDaysInMonth(prevYear, prevMonth);
 
     // Генерация ячеек календаря
-    const days: CalendarDay[] = [];
+    const days: CalendarDayModel[] = [];
 
-    let cur_idx = 0;
+    let cur_id = 0;
 
     // Добавление дней предыдущего месяца
     for (let i = firstDayOfMonth - 1; i >= 0; i--) {
-        days.push(getDay(cur_idx, daysInPrevMonth - i, prevMonth, prevYear, CalendarDayType.PrevMonthDay));
-        cur_idx++;
+        days.push(getDay(cur_id, daysInPrevMonth - i, prevMonth, prevYear, CalendarDayType.PrevMonthDay));
+        cur_id++;
     }
 
     // Добавление дней текущего месяца
     for (let day = 1; day <= daysInMonth; day++) {
-        days.push(getDay(cur_idx, day, month, year, CalendarDayType.WorkDay));
-        cur_idx++;
+        days.push(getDay(cur_id, day, month, year, CalendarDayType.WorkDay));
+        cur_id++;
     }
 
     // Дополнение ячеек днями следующего месяца, чтобы заполнить последнюю строку
     const remainingCells: number = (7 - (days.length % 7)) % 7;
     for (let i = 1; i <= remainingCells; i++) {
-        days.push(getDay(cur_idx, i, month + 1, year, CalendarDayType.NextMonthDay));
-        cur_idx++;
+        days.push(getDay(cur_id, i, month + 1, year, CalendarDayType.NextMonthDay));
+        cur_id++;
     }
+    
 
     return days;
 }

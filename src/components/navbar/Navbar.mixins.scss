@@ -1,0 +1,24 @@
+$title-font: 'Roboto', sans-serif;
+
+@mixin title_font($size) {
+    font-family: $title-font;
+    font-style: normal;
+    font-weight: 300;
+    font-size: $size;
+}
+
+@mixin title($font-size) {
+    cursor: pointer;
+    user-select: none;
+    min-height: 24px;
+    transition: color 0.3s ease-in;
+
+    &__font {
+        @include title_font($font-size);
+    }
+
+    &:hover {
+        cursor: pointer;
+        color: #007bff;
+    }
+}

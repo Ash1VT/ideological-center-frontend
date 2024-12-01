@@ -7,6 +7,7 @@ import CalendarDay from './calendar-day/CalendarDay';
 import { CalendarDayModel, CalendarDayProps, CalendarDayType } from './calendar-day/CalendarDay.props';
 import Holidays from 'date-holidays';
 import { getDaysInMonth, getFirstDayOfMonth, getMonthDays, getMonthName, getSeasonImageSrc, weekDays, weekDaysShortcuts } from '../../utils/calendar';
+import useCalendar from './hooks/useCalendar';
 import CalendarMonth from './calendar-month/CalendarMonth';
 import EventsCard from './events-card/EventsCard';
 import { EventShortModel } from './events-card/EventCard.types';
@@ -33,45 +34,7 @@ const Calendar = ({month, year}: CalendarProps) => {
         },
     ]
 
-    const [curMonth, setCurMonth] = useState(month);
-    const [curYear, setCurYear] = useState(year);
-    const [selectedDay, setSelectedDay] = useState<CalendarDayModel | null>(null);
-    const [monthsData, setMonthsData] = useState<{ month: number; days: CalendarDayModel[] }[]>([]);
-
-    useEffect(() => {
-        Promise.all(
-            Array.from({ length: 12 }, (_, i) => ({
-                         month: i,
-                         days: getMonthDays(i, curYear),
-            }))
-        ).then((data) => {
-            setMonthsData(data);
-        });
-    }, [curYear]);
-
-    const onMonthSelected = (month: number) => {
-        setSelectedDay(null);
-        setCurMonth(month);
-    }
-
-    const onDaySelected = (day: CalendarDayModel) => {
-        if (selectedDay?.id === day.id) {
-            setSelectedDay(null);
-            return;
-        }
-
-        setSelectedDay(day);
-    }
-
-    const onClickNextYear = () => {
-        setSelectedDay(null);
-        setCurYear(curYear + 1);
-    }
-
-    const onClickPrevYear = () => {
-        setSelectedDay(null);
-        setCurYear(curYear - 1);
-    }
+    const  { curMonth, curYear, selectedDay, monthsData, onMonthSelected, onDaySelected, onClickPrevYear, onClickNextYear } = useCalendar(month, year);
 
     const calendarBorderStyle = {
         borderRadius: selectedDay ? '0 20px 20px 0' : '20px 20px 20px 20px'

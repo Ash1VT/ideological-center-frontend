@@ -1,22 +1,12 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import { EventCardProps, EventShortModel } from './EventCard.types'
 import styles from './EventsCard.module.scss'
+import useBlockWidth from 'src/hooks/useBlockWidth'
 import { getMonthName, getWeekDayName } from 'src/utils/calendar'
 import { AnimatePresence, motion } from 'framer-motion'
 
 const EventsCard = ({events, day}: EventCardProps) => {
-    const blockRef = useRef<HTMLDivElement>(null);
-    const [blockWidth, setBlockWidth] = useState(0);
-
-    const updateSecondBlockWidth = useCallback(() => {
-        if (blockRef.current) {
-            setBlockWidth(blockRef.current.offsetWidth);
-        }
-    }, []);
-
-    useLayoutEffect(() => {
-        updateSecondBlockWidth();
-    }, [updateSecondBlockWidth]);
+    const { blockWidth, blockRef } = useBlockWidth<HTMLDivElement>();
 
     return (
         <motion.div 
@@ -29,7 +19,7 @@ const EventsCard = ({events, day}: EventCardProps) => {
             <div className={styles.card}>
                 <div className={styles.date}>
                     <motion.div 
-                            key={day.dayNum}
+                            key={`ed-${day.id}`}
                             className={styles.day}
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -37,7 +27,7 @@ const EventsCard = ({events, day}: EventCardProps) => {
                         {day.dayNum}
                     </motion.div>
                     <motion.div 
-                            key={`${day.dayNum}-${day.monthNum}`}
+                            key={`em-${day.id}`}
                             className={styles.month}
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -45,7 +35,7 @@ const EventsCard = ({events, day}: EventCardProps) => {
                         {getMonthName(day.monthNum)}
                     </motion.div>
                     <motion.div
-                            key={`${day.dayNum}-${day.weekDayNum}`} 
+                            key={`ew-${day.id}`} 
                             className={styles.weekday}
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}

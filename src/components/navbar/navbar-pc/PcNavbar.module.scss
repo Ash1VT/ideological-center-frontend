@@ -1,0 +1,42 @@
+@use '../Navbar.mixins.scss' as nm;
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 20px;
+    min-height: 60px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    z-index: 999;
+    box-shadow: 0px 0 18px rgba(55, 66, 59, 0.08);
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 25px;
+    padding-right: 30px;
+
+    .title {
+        @include nm.title(18px);
+    }
+
+    .subtitle {
+        @include nm.title(16px);
+    }
+}

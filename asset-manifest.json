@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "./static/css/main.862b6a62.css",
-    "main.js": "./static/js/main.0083ae1d.js",
+    "main.css": "./static/css/main.2a54702e.css",
+    "main.js": "./static/js/main.173bdbbe.js",
     "static/js/453.ed3810f9.chunk.js": "./static/js/453.ed3810f9.chunk.js",
     "static/media/Monotype-Corsiva-Regular.ttf": "./static/media/Monotype-Corsiva-Regular.a4a69185d627d4427a50.ttf",
     "static/media/Monotype-Corsiva-Regular-Italic.ttf": "./static/media/Monotype-Corsiva-Regular-Italic.27252dc548c84c9441d2.ttf",
     "static/media/Monotype-Corsiva-Bold.ttf": "./static/media/Monotype-Corsiva-Bold.d63cff36a125f39765bb.ttf",
     "static/media/Monotype-Corsiva-Bold-Italic.ttf": "./static/media/Monotype-Corsiva-Bold-Italic.3482f8341a679bcfa703.ttf",
     "index.html": "./index.html",
-    "main.862b6a62.css.map": "./static/css/main.862b6a62.css.map",
-    "main.0083ae1d.js.map": "./static/js/main.0083ae1d.js.map",
+    "main.2a54702e.css.map": "./static/css/main.2a54702e.css.map",
+    "main.173bdbbe.js.map": "./static/js/main.173bdbbe.js.map",
     "453.ed3810f9.chunk.js.map": "./static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.862b6a62.css",
-    "static/js/main.0083ae1d.js"
+    "static/css/main.2a54702e.css",
+    "static/js/main.173bdbbe.js"
   ]
 }

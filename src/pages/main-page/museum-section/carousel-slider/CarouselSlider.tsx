@@ -8,12 +8,12 @@ const CarouselSlider = () => {
     let interval: NodeJS.Timer;
 
     const items = [
-        {src: '/images/calendar/autumn1.gif'},
-        {src: '/images/test.jpg'},
-        {src: '/images/test.jpg'},
-        {src: '/images/test.jpg'},
-        {src: '/images/test.jpg'},
-        {src: '/images/test.jpg'},
+        {src: './images/calendar/autumn1.gif'},
+        {src: './images/test.jpg'},
+        {src: './images/test.jpg'},
+        {src: './images/test.jpg'},
+        {src: './images/test.jpg'},
+        {src: './images/test.jpg'},
     ]
     
     useEffect(() => {
@@ -26,7 +26,6 @@ const CarouselSlider = () => {
 
     const onItemClick = (index: number) => {
         setFrontItem(index)
-        
         if (frontItem === index) return
         clearInterval(interval)
     }

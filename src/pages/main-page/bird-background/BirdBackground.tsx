@@ -10,7 +10,7 @@ const BirdBackground = () => {
                     Ресурсный центр
                 </div>
                 <div className={styles.subtitle}>
-                    Духовно-нравственное и патриотическое<br/>воспитание молодёжи
+                    По духовно-нравственному и патриотическому<br/>воспитанию молодёжи
                 </div>
             </div>
             <div className={classnames(styles.bird_container, styles.one)}>

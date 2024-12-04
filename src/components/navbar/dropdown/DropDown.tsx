@@ -4,16 +4,21 @@ import { DropDownProps } from './DropDown.types';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import classnames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
+import useOutsideClick from 'src/hooks/useOutsideClick';
 
 const DropDown = ({ title, items, triggerClassName, titleClassName, itemContainerClassName,itemClassName, iconClassName } : DropDownProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  
+  const ref = useOutsideClick<HTMLDivElement>(() => {
+      setIsOpen(false);
+  })
 
   const toggleDropdown = () => {
       setIsOpen(!isOpen);
   };
 
   return (
-      <div className={styles.container}>
+      <div className={styles.container} ref={ref}>
           <div className={classnames(styles.trigger, triggerClassName)} onClick={toggleDropdown}>
               <div className={titleClassName}>{title}</div> 
               <KeyboardArrowDownIcon className={classnames(styles.icon, iconClassName, isOpen ? styles.open : '')}/>

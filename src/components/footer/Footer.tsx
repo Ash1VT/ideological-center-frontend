@@ -73,8 +73,10 @@ const Footer = () => {
                 </div>
             </div>
             <div className={styles.copyright}>
-                    <CopyrightIcon/>
-                    <p className={styles.year}>2024</p>
+                    <div className={styles.copyright__year}>
+                        <CopyrightIcon/>
+                        <p className={styles.year}>2024</p>
+                    </div>
                     <p className={styles.text}>
                         Ресурсный центр
                         по духовно-нравственному и патриотическому

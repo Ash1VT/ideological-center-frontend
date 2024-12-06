@@ -8,6 +8,7 @@ import Calendar from 'src/components/calendar/Calendar'
 import EventsSection from './events-section/EventsSection'
 import { EventModel } from './events-section/events-card/EventCard.props'
 import MuseumSection from './museum-section/MuseumSection'
+import AboutUsSection from './about-us-section/AboutUsSection'
 
 
 const MainPage = () => {
@@ -52,11 +53,12 @@ const MainPage = () => {
 
     return (
         <div className={styles.container}>
-            <Navbar menuItems={navbarMenuItems}/>
+            {/* <Navbar menuItems={navbarMenuItems}/>
             <BirdBackground/>
             <EventsSection events={events}/>
+            <AboutUsSection/> */}
             <MuseumSection/>
-            <Footer/>
+            {/* <Footer/> */}
         </div>
     )
 }

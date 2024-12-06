@@ -13,7 +13,9 @@ const PcNavbar = ({menuItems}: NavbarProps) => {
                 {menuItems.map((item, index) => {
                     if (item.subitems) {
                         return (
-                            <DropDown title={item.name} items={item.subitems} 
+                            <DropDown title={item.name} 
+                                      key={index}            
+                                      items={item.subitems} 
                                       triggerClassName={styles.title} 
                                       titleClassName={styles.title__font} 
                                       itemClassName={classnames(styles.subtitle, styles.subtitle__font)}/>

@@ -36,6 +36,24 @@
             font-size: 50px;
             font-weight: 500;
         }
+
+        @media screen and (max-width: 1500px) {
+            .title {
+                font-size: 60px;
+            }
+            .subtitle {
+                font-size: 40px;
+            }
+        }
+
+        @media screen and (max-width: 1000px) {
+            .title {
+                font-size: 50px;
+            }
+            .subtitle {
+                font-size: 30px;
+            }
+        }
     }
 
 

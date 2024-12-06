@@ -66,4 +66,9 @@
         display: flex;
         justify-content: flex-start;
     }
+
+    @media screen and (max-width: 1500px) {
+        min-width: auto;
+        width: 100%;
+    }
 }

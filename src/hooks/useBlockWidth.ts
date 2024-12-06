@@ -1,21 +1,22 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react'
 
-const useBlockWidth = <T extends HTMLElement>() => {
+const useBlockSize = <T extends HTMLElement>() => {
     const blockRef = useRef<T>(null);
     const [blockWidth, setBlockWidth] = useState<number>(0);
-    
-    const updateBlockWidth = useCallback(() => {
+    const [blockHeight, setBlockHeight] = useState<number>(0);
+
+    const updateBlockSize = useCallback(() => {
         if (blockRef.current) {
             setBlockWidth(blockRef.current.offsetWidth);
+            setBlockHeight(blockRef.current.offsetHeight);
         }
     }, []);
 
-
     useLayoutEffect(() => {
-        updateBlockWidth();
-    }, [updateBlockWidth]);
+        updateBlockSize();
+    }, [updateBlockSize]);
 
-    return {blockWidth, blockRef}
+    return {blockWidth, blockHeight, blockRef}
 }
 
-export default useBlockWidth
+export default useBlockSize

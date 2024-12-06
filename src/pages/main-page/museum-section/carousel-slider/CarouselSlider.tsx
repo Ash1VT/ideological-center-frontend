@@ -1,52 +1,136 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import styles from './CarouselSlider.module.scss'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
+import classnames from 'classnames'
+import { CarouselSliderProps } from './CarouselSlider.props'
+import { useMediaQuery } from '@mui/material'
+import useBlockWidth from 'src/hooks/useBlockWidth'
 
 
-const CarouselSlider = () => {
+const CarouselSlider = ({items}: CarouselSliderProps) => {
     const [frontItem, setFrontItem] = useState(0)
-    let interval: NodeJS.Timer;
+    const [rotationAngle, setRotationAngle] = useState(0)
 
-    const items = [
-        {src: './images/calendar/autumn1.gif'},
-        {src: './images/test.jpg'},
-        {src: './images/test.jpg'},
-        {src: './images/test.jpg'},
-        {src: './images/test.jpg'},
-        {src: './images/test.jpg'},
-    ]
+    const {blockHeight: titleHeight, blockRef: titleRef} = useBlockWidth<HTMLDivElement>();
+
+    const is700= useMediaQuery('(max-width: 760px)')
+    const is600= useMediaQuery('(max-width: 600px)')
+    const is450= useMediaQuery('(max-width: 450px)')
+    
+    let interval: NodeJS.Timer;
     
     useEffect(() => {
         interval = setInterval(() => {
             setFrontItem((frontItem + 1) % items.length)
-        }, 5000)
+            setRotationAngle(rotationAngle + 360 / items.length)
+        }, 10000)
 
         return () => clearInterval(interval)
     }, [frontItem])
 
-    const onItemClick = (index: number) => {
-        setFrontItem(index)
-        if (frontItem === index) return
-        clearInterval(interval)
+    const getItemClick = useCallback((index: number) => {
+        const nextItem = () => {
+            setFrontItem((frontItem + 1) % items.length)
+            setRotationAngle(rotationAngle + 360 / items.length)
+            clearInterval(interval)
+        }
+    
+        const prevItem = () => {
+            setFrontItem((frontItem - 1 + items.length) % items.length)
+            setRotationAngle(rotationAngle - 360 / items.length)
+            clearInterval(interval)
+        }
+
+
+        if (index === frontItem + 1 || (frontItem === 5 && index === 0)) {
+            return nextItem
+        } 
+        
+        if (index === frontItem - 1 || (frontItem === 0 && index === 5)) {
+            return prevItem
+        }
+
+    }, [frontItem, rotationAngle])
+
+    const getZvalue = useCallback(() => {
+        if (is700) {
+            return 34;
+        }
+
+        if (is600) {
+            return 30;
+        }
+
+        if (is450) {
+            return 22;
+        }
+
+        return 50
+
+    }, [is700, is600, is450])
+
+
+    const activeItemStyle = {
+        transform: `rotateY(calc(${frontItem} * ${360 / items.length}deg)) rotateX(3deg) translateZ(${items.length * getZvalue() * 1.1}px) scale(1.1)`,
+        boxShadow: '0 0 60px rgba(0, 0, 0, 0.5)'
     }
 
-    const rotateDegree = frontItem * 360 / items.length
+    const getItemStyle = useCallback((index: number) => {
+        return {
+            transform: `rotateY(calc(${index} * ${360 / items.length}deg)) translateZ(${items.length * getZvalue()}px)`,
+        }
+    }, [is700, is600, is450])
 
+    const getItemHoverClassname = useCallback((index: number) => {
+        if (index === frontItem) {
+            return ''
+        }
+
+        if (index === frontItem + 1 || (frontItem === 5 && index === 0)) {
+            return styles.hover
+        } 
+        
+        if (index === frontItem - 1 || (frontItem === 0 && index === 5)) {
+            return styles.hover
+        }
+        
+        return ''
+    }, [frontItem, rotationAngle])
+
+    console.log('render')
     return (
         <div className={styles.container}>
-            <motion.div className={styles.carousel} 
-                        style={{transform: `perspective(1100px) rotateY(${-rotateDegree}deg)`}}>
-                {items.map((item, index) => {
-                    return (
-                        <motion.div className={styles.item} 
-                             style={{transform: `rotateY(calc(${index} * ${360 / items.length}deg)) translateZ(${items.length * 44}px)`}}
-                             onClick={() => onItemClick(index)}>
-                            
-                            <img src={item.src}></img>
-                        </motion.div>
-                    )
-                })}
-            </motion.div>
+            <div className={styles.details}>
+                <AnimatePresence key={`cs-details-${frontItem}`}>
+                    <motion.div className={styles.title}
+                                ref={titleRef}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.5 }}>
+                        {items[frontItem].title}
+                    </motion.div>
+                    <motion.div className={styles.description}
+                                initial={{ opacity: 0, transform: `translateY(${-titleHeight}px`}}
+                                animate={{ opacity: 1, transform: 'translateY(0)'}}
+                                transition={{ duration: 0.5 }}>
+                        {items[frontItem].description}
+                    </motion.div>
+                </AnimatePresence>
+            </div>
+            <div className={styles.wrapper}>
+                <div className={styles.carousel} 
+                     style={{transform: `perspective(1100px) rotateX(-9deg) rotateY(${-rotationAngle}deg)`}}>
+                     {items.map((item, index) => {
+                        return (
+                            <div key={index} className={classnames(styles.item)} 
+                                style={index === frontItem ? activeItemStyle : getItemStyle(index)}
+                                onClick={getItemClick(index)}>
+                                <img src={item.image} className={getItemHoverClassname(index)}></img>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
         </div>
     )
 }

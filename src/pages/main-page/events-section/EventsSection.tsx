@@ -3,6 +3,7 @@ import EventCard from './events-card/EventCard'
 import styles from './EventsSection.module.scss'
 import { EventsSectionProps } from './EventsSection.props'
 import Section from '../section/Section'
+import SectionButton from '../ui/section-button/SectionButton'
 
 const EventsSection = ({events}: EventsSectionProps) => {
 
@@ -14,9 +15,7 @@ const EventsSection = ({events}: EventsSectionProps) => {
                         return <EventCard key={event.id} event={event}/>
                     })}
                 </div>
-                <div className={styles.button}>
-                    <button>Перейти к афише мероприятий</button>
-                </div>
+                <SectionButton title='Перейти к афише мероприятий' onClick={() => {}}/>
             </div>
         </Section>
     )

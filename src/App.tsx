@@ -11,11 +11,11 @@ function App() {
 
     return <MainPage/>;
 
-    return (
-        <div className={styles.container}>
-            <Calendar month={now.getMonth()} year={now.getFullYear()}/>
-        </div>
-    );
+    // return (
+    //     <div className={styles.container}>
+    //         <Calendar month={now.getMonth()} year={now.getFullYear()}/>
+    //     </div>
+    // );
 }
 
 export default App;

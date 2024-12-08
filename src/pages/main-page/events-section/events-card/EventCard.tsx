@@ -9,7 +9,7 @@ const EventCard = ({event} : EventCardProps) => {
     return (
         <div className={styles.container}>
             <div className={styles.image}>
-                <img src='/images/test.jpg'></img>
+                <img src={event.image}></img>
             </div>
             <div className={styles.content}>
                 <div className={styles.info}>

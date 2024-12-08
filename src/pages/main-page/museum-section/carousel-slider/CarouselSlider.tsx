@@ -11,6 +11,8 @@ const CarouselSlider = ({items}: CarouselSliderProps) => {
     const [frontItem, setFrontItem] = useState(0)
     const [rotationAngle, setRotationAngle] = useState(0)
 
+    const {blockHeight: titleHeight, blockRef: titleRef} = useBlockSize<HTMLDivElement>()
+
     const is700= useMediaQuery('(max-width: 760px)')
     const is600= useMediaQuery('(max-width: 600px)')
     const is450= useMediaQuery('(max-width: 450px)')
@@ -40,11 +42,11 @@ const CarouselSlider = ({items}: CarouselSliderProps) => {
         }
 
 
-        if (index === frontItem + 1 || (frontItem === 5 && index === 0)) {
+        if (index === frontItem + 1 || (frontItem === items.length - 1 && index === 0)) {
             return nextItem
         } 
         
-        if (index === frontItem - 1 || (frontItem === 0 && index === 5)) {
+        if (index === frontItem - 1 || (frontItem === 0 && index === items.length - 1)) {
             return prevItem
         }
 
@@ -85,12 +87,12 @@ const CarouselSlider = ({items}: CarouselSliderProps) => {
         }
 
         // Для следующего элемента
-        if (index === frontItem + 1 || (frontItem === 5 && index === 0)) {
+        if (index === frontItem + 1 || (frontItem === items.length - 1 && index === 0)) {
             return styles.hover
         } 
         
         // Для предыдущего элемента
-        if (index === frontItem - 1 || (frontItem === 0 && index === 5)) {
+        if (index === frontItem - 1 || (frontItem === 0 && index === items.length - 1)) {
             return styles.hover
         }
         
@@ -103,6 +105,7 @@ const CarouselSlider = ({items}: CarouselSliderProps) => {
             <div className={styles.details}>
                 <AnimatePresence>
                     <motion.div key={`cs-title-${frontItem}`}
+                                ref={titleRef}
                                 className={styles.title}
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
@@ -111,7 +114,7 @@ const CarouselSlider = ({items}: CarouselSliderProps) => {
                     </motion.div>
                     <motion.div key={`cs-description-${frontItem}`}
                                 className={styles.description}
-                                initial={{ opacity: 0, transform: `translateY(-100%)`}}
+                                initial={{ opacity: 0, transform: `translateY(-${titleHeight}px)`}}
                                 animate={{ opacity: 1, transform: 'translateY(0)'}}
                                 transition={{ duration: 0.5 }}>
                         {items[frontItem].description}

@@ -10,6 +10,7 @@ import { EventModel } from './events-section/events-card/EventCard.props'
 import MuseumSection from './museum-section/MuseumSection'
 import AboutUsSection from './about-us-section/AboutUsSection'
 import PartnersSection from './partners-section/PartnersSection'
+import LocationSection from './location-section/LocationSection'
 
 
 const MainPage = () => {
@@ -32,7 +33,7 @@ const MainPage = () => {
             id: 1,
             title: 'Мероприятие 1',
             description: 'Описание мероприятия 1',
-            image: '/images/test.jpg',
+            image: './images/test.jpg',
             link: '',
             location: 'Москва, Россия',
             startDate: '2023-04-01',
@@ -42,7 +43,7 @@ const MainPage = () => {
             id: 2,
             title: 'Мероприятие 1',
             description: 'Описание мероприятия 1',
-            image: '/images/test.jpg',
+            image: './images/test.jpg',
             link: '',
             location: 'Москва, Россия',
             startDate: '2023-04-01',
@@ -50,16 +51,25 @@ const MainPage = () => {
         }
     ]
 
-    const now = new Date()
+    const partners = [
+        {name: 'Партнер 1', image: './images/test.jpg', link: ''},
+        {name: 'Партнер 2', image: './images/test.jpg', link: ''},
+        {name: 'Партнер 3', image: './images/test.jpg', link: ''},
+        {name: 'Партнер 4', image: './images/test.jpg', link: ''},
+        {name: 'Партнер 5', image: './images/test.jpg', link: ''},
+    ]
 
     return (
         <div className={styles.container}>
             <Navbar menuItems={navbarMenuItems}/>   
             <BirdBackground/>
-            <AboutUsSection/>
-            <EventsSection events={events}/>
-            <MuseumSection/>
-            <PartnersSection/>
+            <div className={styles.sections}>
+                <AboutUsSection/>
+                <EventsSection events={events}/>
+                <MuseumSection/>
+                <PartnersSection partners={partners}/>
+                <LocationSection/>
+            </div>
             <Footer/>
         </div>
     )

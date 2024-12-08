@@ -1,17 +1,26 @@
 import React from 'react'
 import styles from './BirdBackground.module.scss'
 import classnames from 'classnames'
+import { motion } from 'framer-motion'
 
 const BirdBackground = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <div className={styles.title}>
+                <motion.div className={styles.title}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.5 }}
+                            viewport={{ once: true }}>
                     Ресурсный центр
-                </div>
-                <div className={styles.subtitle}>
+                </motion.div>
+                <motion.div className={styles.subtitle}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.5 }}
+                            viewport={{ once: true }}>
                     По духовно-нравственному и патриотическому<br/>воспитанию молодёжи
-                </div>
+                </motion.div>
             </div>
             <div className={classnames(styles.bird_container, styles.one)}>
                 <div className={`${styles.bird} ${styles.one}`}></div>

@@ -6,7 +6,7 @@
     .wrapper {
         display: flex;
         justify-content: center;
-        margin: 80px 150px 180px 0;
+        margin: 80px 0 180px 0;
     }
 
     .details {
@@ -23,9 +23,10 @@
         }
 
         .description {
-            font-family: 'Kanit', sans-serif;
-            font-size: 18px;
+            font-family: 'Alegreya', sans-serif;
+            font-size: 24px;
             font-weight: 400;
+            text-align: justify;
         }
     }
 

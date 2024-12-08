@@ -1,0 +1,14 @@
+.container {
+
+}
+
+.image {
+    max-width: 300px;
+    max-height: 300px;
+
+    overflow: hidden;
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+}

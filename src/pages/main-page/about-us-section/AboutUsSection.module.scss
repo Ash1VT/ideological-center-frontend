@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    column-gap: 80px;
+
+    p {
+        margin: 0;
+        font-family: 'Alegreya', sans-serif;
+        font-size: 28px;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: justify;
+        vertical-align: text-top;
+    }
+
+    .images {
+        min-width: 600px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+
+        .image {
+            min-width: 500px;
+
+            img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+            
+            &:nth-child(1) {
+                align-self: flex-start;
+            }
+
+            &:nth-child(2) {
+                align-self: flex-end;
+            }
+        }
+
+    }
+}

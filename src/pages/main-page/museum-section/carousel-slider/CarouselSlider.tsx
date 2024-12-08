@@ -4,14 +4,12 @@ import { AnimatePresence, motion } from 'framer-motion'
 import classnames from 'classnames'
 import { CarouselSliderProps } from './CarouselSlider.props'
 import { useMediaQuery } from '@mui/material'
-import useBlockWidth from 'src/hooks/useBlockWidth'
+import useBlockSize from 'src/hooks/useBlockSize'
 
 
 const CarouselSlider = ({items}: CarouselSliderProps) => {
     const [frontItem, setFrontItem] = useState(0)
     const [rotationAngle, setRotationAngle] = useState(0)
-
-    const {blockHeight: titleHeight, blockRef: titleRef} = useBlockWidth<HTMLDivElement>();
 
     const is700= useMediaQuery('(max-width: 760px)')
     const is600= useMediaQuery('(max-width: 600px)')
@@ -53,16 +51,16 @@ const CarouselSlider = ({items}: CarouselSliderProps) => {
     }, [frontItem, rotationAngle])
 
     const getZvalue = useCallback(() => {
-        if (is700) {
-            return 34;
+        if (is450) {
+            return 22;
         }
 
         if (is600) {
             return 30;
         }
 
-        if (is450) {
-            return 22;
+        if (is700) {
+            return 34;
         }
 
         return 50
@@ -86,10 +84,12 @@ const CarouselSlider = ({items}: CarouselSliderProps) => {
             return ''
         }
 
+        // Для следующего элемента
         if (index === frontItem + 1 || (frontItem === 5 && index === 0)) {
             return styles.hover
         } 
         
+        // Для предыдущего элемента
         if (index === frontItem - 1 || (frontItem === 0 && index === 5)) {
             return styles.hover
         }
@@ -101,16 +101,17 @@ const CarouselSlider = ({items}: CarouselSliderProps) => {
     return (
         <div className={styles.container}>
             <div className={styles.details}>
-                <AnimatePresence key={`cs-details-${frontItem}`}>
-                    <motion.div className={styles.title}
-                                ref={titleRef}
+                <AnimatePresence>
+                    <motion.div key={`cs-title-${frontItem}`}
+                                className={styles.title}
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.5 }}>
                         {items[frontItem].title}
                     </motion.div>
-                    <motion.div className={styles.description}
-                                initial={{ opacity: 0, transform: `translateY(${-titleHeight}px`}}
+                    <motion.div key={`cs-description-${frontItem}`}
+                                className={styles.description}
+                                initial={{ opacity: 0, transform: `translateY(-100%)`}}
                                 animate={{ opacity: 1, transform: 'translateY(0)'}}
                                 transition={{ duration: 0.5 }}>
                         {items[frontItem].description}

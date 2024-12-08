@@ -6,7 +6,7 @@
     .wrapper {
         display: flex;
         justify-content: center;
-        margin: 80px 100px 180px 0;
+        margin: 80px 150px 180px 0;
     }
 
     .details {
@@ -86,7 +86,7 @@
                 cursor: pointer;
 
                 &:hover {
-                    transform: translateY(-10px);
+                    transform: scale(1.05);
                 }
             }
             

@@ -1,12 +1,12 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import { EventCardProps, EventShortModel } from './EventCard.types'
 import styles from './EventsCard.module.scss'
-import useBlockWidth from 'src/hooks/useBlockWidth'
+import useBlockSize from 'src/hooks/useBlockSize'
 import { getMonthName, getWeekDayName } from 'src/utils/calendar'
 import { AnimatePresence, motion } from 'framer-motion'
 
 const EventsCard = ({events, day}: EventCardProps) => {
-    const { blockWidth, blockRef } = useBlockWidth<HTMLDivElement>();
+    const { blockWidth, blockRef } = useBlockSize<HTMLDivElement>();
 
     return (
         <motion.div 

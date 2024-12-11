@@ -62,12 +62,41 @@
 
     .content {
         margin-top: 60px;
-        display: flex;
-        justify-content: flex-start;
+        // display: flex;
+        // justify-content: flex-start;
     }
 
     @media screen and (max-width: 1500px) {
         min-width: auto;
         width: 100%;
     }
+
+    @media screen and (max-width: 530px) {
+        .title {
+            h1, h2, h3 {
+                font-size: 12px;
+            }
+        }
+
+        .subtitle {
+            h1, h2, h3 {
+                font-size: 30px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 530px) {
+        .title {
+            h1, h2, h3 {
+                font-size: 12px;
+            }
+        }
+
+        .subtitle {
+            h1, h2, h3 {
+                font-size: 25px;
+            }
+        }
+    }
+
 }

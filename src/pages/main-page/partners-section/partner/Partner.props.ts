@@ -6,5 +6,4 @@ export type PartnerModel = {
 
 export type PartnerProps = {
     partner: PartnerModel
-    onNavigate: (link: string) => void
 }

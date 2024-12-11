@@ -52,11 +52,11 @@ const MainPage = () => {
     ]
 
     const partners = [
-        {name: 'Партнер 1', image: './images/test.jpg', link: ''},
-        {name: 'Партнер 2', image: './images/test.jpg', link: ''},
-        {name: 'Партнер 3', image: './images/test.jpg', link: ''},
-        {name: 'Партнер 4', image: './images/test.jpg', link: ''},
-        {name: 'Партнер 5', image: './images/test.jpg', link: ''},
+        {name: 'Приход Храма Собора Всех Белорусских Святых', image: './images/partners/sobor.png', link: 'https://belsobor.by/'},
+        {name: 'Государственное учреждение образования «Гродненский государственный университет имени Янки Купалы»', image: './images/partners/grsu2.svg', link: 'https://grsu.by/'},
+        {name: 'Учреждение культуры «Гродненский государственный музей истории религии»', image: './images/partners/museum.png', link: 'http://religija.museum.by/'},
+        {name: 'Государственное учреждение образования «Центр творчества детей и молодежи «Прамень» г. Гродно»', image: './images/partners/sun.gif', link: 'https://pramen-grodno.by/'},
+        // {name: 'Научно-популярный и литературный журнал «Планета-семья»', image: './images/partners/grsu.png', link: ''},
     ]
 
     return (

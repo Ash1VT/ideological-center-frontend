@@ -7,6 +7,22 @@ const AboutUsSection = () => {
     return (
         <Section title='О нас' subtitle='Ресурсный центр'>
             <div className={styles.container}>
+                <div className={styles.images}>
+                    <motion.div className={styles.image}
+                                initial={{ opacity: 0, transform: 'translateX(-100px)' }}
+                                whileInView={{ opacity: 1, transform: 'translateX(0%)' }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5}}>
+                        <img src='./images/about/1.jpg'/>
+                    </motion.div>
+                    <motion.div className={styles.image}
+                                initial={{ opacity: 0, transform: 'translateX(100px)' }}
+                                whileInView={{ opacity: 1, transform: 'translateX(0%)' }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5}}>
+                        <img src='./images/about/2.jpg'/>
+                    </motion.div>
+                </div>
                 <motion.p
                     initial={{ opacity: 0, translateY: -50 }}
                     whileInView={{ opacity: 1, translateY: 0 }}
@@ -27,22 +43,7 @@ const AboutUsSection = () => {
                           помимо знаний, любовь к Отечеству, научить доброте, 
                           терпимости, умению жить в гармонии с собой и другими людьми.
                 </motion.p>
-                <div className={styles.images}>
-                    <motion.div className={styles.image}
-                                initial={{ opacity: 0, transform: 'translateX(-100px)' }}
-                                whileInView={{ opacity: 1, transform: 'translateX(0%)' }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5}}>
-                        <img src='./images/about/1.jpg'/>
-                    </motion.div>
-                    <motion.div className={styles.image}
-                                initial={{ opacity: 0, transform: 'translateX(100px)' }}
-                                whileInView={{ opacity: 1, transform: 'translateX(0%)' }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5}}>
-                        <img src='./images/about/2.jpg'/>
-                    </motion.div>
-                </div>
+                
             </div>
         </Section>
     )

@@ -99,7 +99,6 @@ const CarouselSlider = ({items}: CarouselSliderProps) => {
         return ''
     }, [frontItem, rotationAngle])
 
-    console.log('render')
     return (
         <div className={styles.container}>
             <div className={styles.details}>

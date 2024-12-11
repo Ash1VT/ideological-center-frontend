@@ -1,7 +1,20 @@
 .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .partners {
         display: flex;
         flex-direction: row;
+        column-gap: 30px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    @media screen and (max-width: 1060px) {
+        .partners {
+            justify-content: center;
+        }
     }
 }

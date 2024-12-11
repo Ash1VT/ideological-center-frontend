@@ -4,18 +4,15 @@ import styles from './App.module.scss'
 import EventsCard from './components/calendar/events-card/EventsCard';
 import MainPage from './pages/main-page/MainPage';
 import { slide as Menu } from 'react-burger-menu'
+import { YMaps, Map } from 'react-yandex-maps';
 
 function App() {
-    
-    const now = new Date(Date.now());
 
-    return <MainPage/>;
-
-    // return (
-    //     <div className={styles.container}>
-    //         <Calendar month={now.getMonth()} year={now.getFullYear()}/>
-    //     </div>
-    // );
+    return (
+        <YMaps query={{load: "package.full", apikey: process.env.YANDEX_MAPS_API_KEY}}>
+            <MainPage/>
+        </YMaps>
+    );
 }
 
 export default App;

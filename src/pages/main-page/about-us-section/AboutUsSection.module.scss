@@ -1,6 +1,7 @@
 .container {
-    display: flex;
-    column-gap: 80px;
+    // display: flex;
+    // column-gap: 80px;
+    // align-items: flex-start;
 
     p {
         margin: 0;
@@ -10,6 +11,7 @@
         line-height: 1.5;
         text-align: justify;
         vertical-align: text-top;
+        flex: 1;
     }
 
     .images {
@@ -17,10 +19,10 @@
         display: flex;
         flex-direction: column;
         row-gap: 20px;
+        margin-left: 60px;
+        float: right;
 
         .image {
-            min-width: 500px;
-
             img {
                 max-width: 100%;
                 max-height: 100%;
@@ -36,4 +38,14 @@
         }
 
     }
+
+    @media screen and (max-width: 984px) {
+        & {
+            .images {
+                min-width: auto;
+                float: none;
+                margin-left: 0;
+            }
+        }
+    }   
 }

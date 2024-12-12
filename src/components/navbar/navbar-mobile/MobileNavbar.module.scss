@@ -3,6 +3,23 @@
 .container {
     position: relative;
 
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: space-between;
+    // align-items: center;
+    // padding: 0 20px;
+    min-height: 60px;
+
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    // background-color: #fff;
+    z-index: 999;
+    box-shadow: 0px 0 18px rgba(55, 66, 59, 0.08);
+}
+
+.navbar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -15,8 +32,7 @@
     left: 0;
     right: 0;
     background-color: #fff;
-    z-index: 999;
-    box-shadow: 0px 0 18px rgba(55, 66, 59, 0.08);
+    z-index: 20;
 }
 
 .burger {
@@ -25,6 +41,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 20;
 
     .icon {
         &.open {
@@ -39,9 +56,9 @@
 }
 
 .menu {
-    position: absolute;
+    position: fixed;
     left: 100%;
-    top: 100%;
+    top: 60px;
     background-color: #fff;
     padding: 20px;
     height: 100vh;
@@ -50,6 +67,8 @@
     display: flex;
     flex-direction: column;
     row-gap: 20px;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+    z-index: 20;
 
     .title {
         @include nm.title(18px);
@@ -58,4 +77,14 @@
     .subtitle {
         @include nm.title(16px);
     }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 15;
 }

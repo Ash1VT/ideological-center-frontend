@@ -10,14 +10,14 @@ const AboutUsSection = () => {
                 <div className={styles.images}>
                     <motion.div className={styles.image}
                                 initial={{ opacity: 0, transform: 'translateX(-100px)' }}
-                                whileInView={{ opacity: 1, transform: 'translateX(0%)' }}
+                                whileInView={{ opacity: 1, transform: 'translateX(0)' }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5}}>
                         <img src='./images/about/1.jpg'/>
                     </motion.div>
                     <motion.div className={styles.image}
                                 initial={{ opacity: 0, transform: 'translateX(100px)' }}
-                                whileInView={{ opacity: 1, transform: 'translateX(0%)' }}
+                                whileInView={{ opacity: 1, transform: 'translateX(0)' }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5}}>
                         <img src='./images/about/2.jpg'/>

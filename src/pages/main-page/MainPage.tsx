@@ -21,7 +21,7 @@ const MainPage = ({navbarItems} : MainPageProps) => {
             id: 1,
             title: 'Мероприятие 1',
             description: 'Описание мероприятия 1',
-            image: './images/test.jpg',
+            image: '/images/test.jpg',
             link: '',
             location: 'Москва, Россия',
             startDate: '2023-04-01',
@@ -31,7 +31,7 @@ const MainPage = ({navbarItems} : MainPageProps) => {
             id: 2,
             title: 'Мероприятие 1',
             description: 'Описание мероприятия 1',
-            image: './images/test.jpg',
+            image: '/images/test.jpg',
             link: '',
             location: 'Москва, Россия',
             startDate: '2023-04-01',
@@ -49,7 +49,7 @@ const MainPage = ({navbarItems} : MainPageProps) => {
 
     return (
         <div className={styles.container}>
-            <Navbar logo='./images/logo.png' menuItems={navbarItems}/>   
+            <Navbar logo='/images/logo.png' menuItems={navbarItems}/>   
             <BirdBackground/>
             <div className={styles.sections}>
                 <AboutUsSection/>

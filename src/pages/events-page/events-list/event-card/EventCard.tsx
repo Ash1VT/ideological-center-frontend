@@ -8,14 +8,20 @@ import NextPlanIcon from '@mui/icons-material/NextPlan';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import { EventState } from 'src/redux/models/events';
 import PlaceIcon from '@mui/icons-material/Place';
+import { useNavigate } from 'react-router-dom';
 
 const EventCard = ({event} : EventCardProps) => {
+    const navigate = useNavigate()
+
     const startDay = event.startDate.getDay()
     const startMonth = getMonthRusShortName(event.startDate.getMonth())
 
     const endDay = event.endDate.getDay()
     const endMonth = getMonthRusShortName(event.endDate.getMonth())
 
+    const handleClick = () => {
+        navigate(`/events/${event.id}`)
+    }
     const PassedStatus = () => {
         return (
             <div className={classnames(styles.status, styles.passed)}>
@@ -115,7 +121,7 @@ const EventCard = ({event} : EventCardProps) => {
                 </div>
                 {getEventStatus()}
                 <div className={styles.button}>
-                    <button>
+                    <button onClick={() => {handleClick()}}>
                         Подробнее
                     </button>
                 </div>

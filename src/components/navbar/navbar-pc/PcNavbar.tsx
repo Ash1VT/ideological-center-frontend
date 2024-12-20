@@ -3,9 +3,16 @@ import React from 'react'
 import styles from './PcNavbar.module.scss'
 import DropDown from '../dropdown/DropDown'
 import { NavbarProps } from '../Navbar.types'
+import { useNavigate } from 'react-router-dom'
 
 
 const PcNavbar = ({logo, menuItems}: NavbarProps) => {
+    const navigate = useNavigate()
+
+    const handleClick = (link: string) => {
+        navigate(link)
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.navbar}>
@@ -25,7 +32,7 @@ const PcNavbar = ({logo, menuItems}: NavbarProps) => {
                             )
                         }
                         return (
-                            <div key={index} className={classnames(styles.title, styles.title__font)}>{item.name}</div>
+                            <div key={index} className={classnames(styles.title, styles.title__font)} onClick={() => handleClick(item.link)}>{item.name}</div>
                         )
                     }
                     )}

@@ -5,5 +5,6 @@ export type MenuItem = {
 }
 
 export type NavbarProps = {
+    logo: string
     menuItems: MenuItem[]
 }

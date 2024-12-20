@@ -43,9 +43,6 @@ const Footer = () => {
                                 <a href="#">Афиша событий</a>
                             </li>
                             <li>
-                                <a href="#">Партнеры</a>
-                            </li>
-                            <li>
                                 <a href="#">Музей</a>
                             </li>
                         </ul>

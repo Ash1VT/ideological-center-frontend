@@ -1,22 +1,16 @@
 @use '../Navbar.mixins.scss' as nm;
 
 .container {
-    position: relative;
     display: flex;
-    flex-direction: row;
-    // display: flex;
-    // flex-direction: row;
-    // justify-content: space-between;
-    // align-items: center;
-    // padding: 0 20px;
-    min-height: 60px;
+    min-height: 68px;
+    z-index: 5;
 
-    // position: fixed;
-    // top: 0;
-    // left: 0;
-    // right: 0;
-    // background-color: #fff;
-    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0px 0 18px rgba(55, 66, 59, 0.08);
 }
 
 .navbar {
@@ -25,14 +19,10 @@
     justify-content: space-between;
     align-items: center;
     min-height: 60px;
-    padding: 0 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    padding: 4px 20px;
     background-color: #fff;
+    flex: 1;
     z-index: 20;
-    box-shadow: 0px 0 18px rgba(55, 66, 59, 0.08);
 }
 
 .burger {
@@ -55,10 +45,23 @@
     }
 }
 
+.logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 60px;
+
+    img {
+        max-width: 100%;
+    }
+}
+
 .menu {
     position: fixed;
     left: 100%;
-    top: 60px;
+    top: 68px;
     background-color: #fff;
     padding: 20px;
     height: 100vh;

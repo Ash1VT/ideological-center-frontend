@@ -47,3 +47,10 @@
     color: red;
     font-size: 14px;
 }
+
+
+@media screen and (max-width: 1040px) {
+    .container {
+        margin: 40px 0;
+    }
+}

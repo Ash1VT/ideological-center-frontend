@@ -12,7 +12,7 @@ function App() {
     const navbarMenuItems = [
         {name: 'О нас', link: ''},
         {name: 'Афиша событий', link: ''},
-        {name: 'Партнеры', link: ''},
+        // {name: 'Партнеры', link: ''},
         {name: 'Музей', link: ''},
         {name: 'Библиотека', link: '', subitems: [
             {name: 'Нормативные документы', link: ''},

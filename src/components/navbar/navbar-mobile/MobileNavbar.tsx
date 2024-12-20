@@ -7,7 +7,7 @@ import classnames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import useOutsideClick from 'src/hooks/useOutsideClick';
 
-const MobileNavbar = ({menuItems} : NavbarProps) => {
+const MobileNavbar = ({logo, menuItems} : NavbarProps) => {
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -22,7 +22,9 @@ const MobileNavbar = ({menuItems} : NavbarProps) => {
     return (
         <div className={styles.container} ref={ref}>
             <div className={styles.navbar}>
-                <div className={styles.logo}>Logo</div>
+                <div className={styles.logo}>
+                    <img src={logo}></img>
+                </div>
                 <motion.div className={styles.burger} onClick={onMenuOpened}
                             animate={
                                     { 

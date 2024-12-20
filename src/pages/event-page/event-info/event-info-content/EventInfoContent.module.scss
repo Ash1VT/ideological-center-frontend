@@ -15,7 +15,6 @@
 
     .text {
         color: #777777;
-        
         p {
             font-family: 'Kanit', sans-serif;
             font-size: 16px;
@@ -34,4 +33,56 @@
             max-width: 100%;
         }
     }
+}
+
+
+
+@media screen and (max-width: 850px) {
+
+    .container {
+        flex-direction: row;
+        padding: 20px 5px;
+    }
+
+    .content {
+        flex: 1;
+        
+        .text {
+            flex: 1;
+            padding: 0 40px 0 0;
+
+        }
+        .image {
+            max-width: 100px;
+            max-height: 100px;
+
+        }
+    }
+
+}
+
+@media screen and (max-width: 520px) {
+
+    .content {
+        
+        .text {
+            p {
+                font-size: 12px;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+
+
+    .content {
+        .image {
+            max-width: 70px;
+            max-height: 70px;
+
+        }
+    }
+
 }

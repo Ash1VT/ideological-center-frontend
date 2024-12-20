@@ -4,15 +4,15 @@ import PcNavbar from './navbar-pc/PcNavbar';
 import { useMediaQuery } from '@mui/material';
 import MobileNavbar from './navbar-mobile/MobileNavbar';
 
-const Navbar = ({menuItems}: NavbarProps) => {
+const Navbar = ({logo, menuItems}: NavbarProps) => {
 
     const isMobileView = useMediaQuery("(max-width: 720px)");
 
     if (!isMobileView) {
-        return <PcNavbar menuItems={menuItems}/>
+        return <PcNavbar logo={logo} menuItems={menuItems}/>
     }
 
-    return <MobileNavbar menuItems={menuItems}/>
+    return <MobileNavbar logo={logo} menuItems={menuItems}/>
 }
 
 export default Navbar

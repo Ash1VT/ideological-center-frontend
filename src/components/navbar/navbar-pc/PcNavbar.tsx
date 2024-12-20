@@ -5,11 +5,13 @@ import DropDown from '../dropdown/DropDown'
 import { NavbarProps } from '../Navbar.types'
 
 
-const PcNavbar = ({menuItems}: NavbarProps) => {
+const PcNavbar = ({logo, menuItems}: NavbarProps) => {
     return (
         <div className={styles.container}>
             <div className={styles.navbar}>
-                <div className={styles.logo}>Logo</div>
+                <div className={styles.logo}>
+                    <img src={logo}></img>
+                </div>
                 <div className={styles.menu}>
                     {menuItems.map((item, index) => {
                         if (item.subitems) {

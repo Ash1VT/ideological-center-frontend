@@ -49,7 +49,7 @@ const MainPage = ({navbarItems} : MainPageProps) => {
 
     return (
         <div className={styles.container}>
-            <Navbar menuItems={navbarItems}/>   
+            <Navbar logo='./images/logo.png' menuItems={navbarItems}/>   
             <BirdBackground/>
             <div className={styles.sections}>
                 <AboutUsSection/>

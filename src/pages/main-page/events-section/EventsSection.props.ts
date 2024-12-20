@@ -1,4 +1,4 @@
-import { EventModel } from "./events-card/EventCard.props"
+import { EventModel } from "./event-card/EventCard.props"
 
 export type EventsSectionProps = {
     events: EventModel[]

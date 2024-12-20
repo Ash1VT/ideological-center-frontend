@@ -1,0 +1,42 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 60px;
+
+
+    .year {
+        font-family: 'Kanit', sans-serif;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+
+        h3 {
+            font-size: 36px;
+            margin: 20px 40px;
+        }
+
+        &::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 5px;
+            background-color: #007bff;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 5px;
+            background-color: #007bff;
+        }
+    }
+
+    .events {
+        display: flex;
+        flex-direction: column;
+        row-gap: 40px;
+    }
+}

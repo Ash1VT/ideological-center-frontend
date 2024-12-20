@@ -1,0 +1,29 @@
+.container {
+    border-radius: 4px;
+    display: flex;
+    /* padding-top: 10px !important; */
+    /* padding-bottom: 10px !important; */
+}
+
+.dropdown {
+    border: none !important;
+    background-color: #eff5f5 !important;
+
+    &:hover {
+        filter: none !important;
+        cursor: default !important;
+    }
+
+}
+
+
+.input {
+    border: none !important;
+    height: 100% !important;
+    width: 100% !important;
+    font-family: Poppins !important;
+    font-weight: 400 !important;
+    font-size: 18px !important;
+    /* padding-top: 10px !important;
+    padding-bottom: 10px !important; */
+}

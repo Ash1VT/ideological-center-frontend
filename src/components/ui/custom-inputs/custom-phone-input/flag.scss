@@ -1,0 +1,12 @@
+.selected-flag {
+    min-width: 50px;
+    display: flex !important;
+    justify-content: center !important;
+    // padding: 0 !important;
+    background-color: #eff5f5 !important;
+    border: none;
+    padding: 0 2px 0 0 !important;
+    &:hover {
+        background-color: inherit;
+    }
+}

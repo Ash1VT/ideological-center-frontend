@@ -1,0 +1,35 @@
+.container {
+    padding: 80px 100px;
+    text-align: center;
+    background-color: #fff;
+    font-size: 18px;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    transform: translateY(-1px);
+    min-width: 1200px;
+    .content {
+        display: none;
+
+        &.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.5s ease;
+            margin: 0 100px;
+        }
+    }
+}
+
+
+// Анимация появления контента
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

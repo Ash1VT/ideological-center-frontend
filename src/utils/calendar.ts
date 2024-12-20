@@ -1,5 +1,5 @@
 import Holidays from "date-holidays";
-import { CalendarDayModel, CalendarDayType } from "../components/calendar/calendar-day/CalendarDay.props";
+import { CalendarDayModel, CalendarDayType } from "../pages/events-page/events-calendar/calendar-day/CalendarDay.props";
 
 const hd = new Holidays();
 hd.init('BY');
@@ -7,6 +7,11 @@ hd.init('BY');
 export const monthesShortcuts: string[] = [
     "Jan", "Feb", "Mar", "Apr", "May", "Jun",
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+];
+
+export const monthesRusShortcuts: string[] = [
+    "Янв", "Фев", "Мар", "Апр", "Май", "Июн",
+    "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"
 ];
 
 export const monthes: string[] = [
@@ -97,6 +102,15 @@ export const getMonthName = (month: number): string => {
     }
   
     return monthes[month];
+};
+
+// Получение названия месяца
+export const getMonthRusShortName = (month: number): string => {
+    if (month < 0 || month > 11) {
+        throw new Error("Month must be between 0 and 11.");
+    }
+  
+    return monthesRusShortcuts[month];
 };
 
 export const getWeekDayName = (day: number): string => {

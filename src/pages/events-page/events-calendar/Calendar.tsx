@@ -6,7 +6,7 @@ import { CalendarProps } from './Calendar.props';
 import CalendarDay from './calendar-day/CalendarDay';
 import { CalendarDayModel, CalendarDayProps, CalendarDayType } from './calendar-day/CalendarDay.props';
 import Holidays from 'date-holidays';
-import { getDaysInMonth, getFirstDayOfMonth, getMonthDays, getMonthName, getSeasonImageSrc, weekDays, weekDaysShortcuts } from '../../utils/calendar';
+import { getDaysInMonth, getFirstDayOfMonth, getMonthDays, getMonthName, getSeasonImageSrc, weekDays, weekDaysShortcuts } from '../../../utils/calendar';
 import useCalendar from './hooks/useCalendar';
 import CalendarMonth from './calendar-month/CalendarMonth';
 import EventsCard from './events-card/EventsCard';

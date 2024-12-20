@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-width: 340px;
+    // overflow: hidden;
+    height: 100%;
+}
+
+.content {
+    flex: 1;
+    margin-bottom: 60px;
+}
+
+.event {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .info {
+
+        max-width: 1100px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 30px;
+    }
+}

@@ -4,29 +4,17 @@ import BirdBackground from './bird-background/BirdBackground'
 import Navbar from 'src/components/navbar/Navbar'
 import Footer from 'src/components/footer/Footer'
 import Section from './section/Section'
-import Calendar from 'src/components/calendar/Calendar'
+import Calendar from 'src/pages/events-page/events-calendar/Calendar'
 import EventsSection from './events-section/EventsSection'
-import { EventModel } from './events-section/events-card/EventCard.props'
+import { EventModel } from './events-section/event-card/EventCard.props'
 import MuseumSection from './museum-section/MuseumSection'
 import AboutUsSection from './about-us-section/AboutUsSection'
 import PartnersSection from './partners-section/PartnersSection'
 import LocationSection from './location-section/LocationSection'
+import { MainPageProps } from './MainPage.types'
 
 
-const MainPage = () => {
-    const navbarMenuItems = [
-            {name: 'О нас', link: ''},
-            {name: 'Афиша событий', link: ''},
-            {name: 'Партнеры', link: ''},
-            {name: 'Музей', link: ''},
-            {name: 'Библиотека', link: '', subitems: [
-                {name: 'Нормативные документы', link: ''},
-                {name: 'Методические документы', link: ''},
-                {name: 'Обучающие материалы', link: ''},
-                {name: 'Презентации', link: ''},
-                {name: 'Фото и видео', link: ''},
-            ]}
-    ]
+const MainPage = ({navbarItems} : MainPageProps) => {
 
     const events: EventModel[] = [
         {
@@ -61,7 +49,7 @@ const MainPage = () => {
 
     return (
         <div className={styles.container}>
-            <Navbar menuItems={navbarMenuItems}/>   
+            <Navbar menuItems={navbarItems}/>   
             <BirdBackground/>
             <div className={styles.sections}>
                 <AboutUsSection/>

@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    padding: 5px 35px;
+    flex: 1;
+    min-height: 174.716px;
+}
+
+.content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    .text {
+        color: #777777;
+        
+        p {
+            font-family: 'Kanit', sans-serif;
+            font-size: 16px;
+            line-height: 1.2;
+            text-align: justify;
+            padding: 0;
+            margin: 0;
+        }
+
+    }
+    .image {
+        max-width: 164.617px;
+        max-height: 164.617px;
+
+        img {
+            max-width: 100%;
+        }
+    }
+}

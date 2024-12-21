@@ -20,7 +20,7 @@ const EventPage = ({navbarItems}: EventPageProps) => {
         description: 'Описание мероприятия',
         participants: 'Участники',
         coordinatorContact: 'Контакты',
-        image: '/images/test.jpg',
+        image: './images/test.jpg',
         link: '',
         location: 'Москва',
         startDate: new Date('2023-01-01'),
@@ -31,7 +31,7 @@ const EventPage = ({navbarItems}: EventPageProps) => {
 
     return (
         <div className={styles.container}>
-            <Navbar logo='/images/logo.png' menuItems={navbarItems}/>
+            <Navbar logo='./images/logo.png' menuItems={navbarItems}/>
             <div className={styles.content}>
                 <PageHeader/>
                 <div className={styles.event}>

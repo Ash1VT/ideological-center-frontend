@@ -1,4 +1,4 @@
-import { EventModel } from "./event-card/EventCard.props"
+import { EventModel } from "src/redux/models/events"
 
 export type EventsSectionProps = {
     events: EventModel[]

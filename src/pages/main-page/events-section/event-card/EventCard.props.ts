@@ -1,13 +1,4 @@
-export type EventModel = {
-    id: number;
-    title: string;
-    description: string;
-    image: string;
-    link: string;
-    location: string;
-    startDate: string;
-    endDate: string;
-}
+import { EventModel } from "src/redux/models/events"
 
 export type EventCardProps = {
     event: EventModel

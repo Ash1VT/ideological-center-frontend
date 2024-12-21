@@ -23,7 +23,7 @@ const EventsPage = ({ navbarItems } : EventsPageProps) => {
 
     return (
         <div className={styles.container}>
-            <Navbar logo='/images/logo.png' menuItems={navbarItems}/>
+            <Navbar logo='./images/logo.png' menuItems={navbarItems}/>
 
             <div className={styles.content}>
                 <PageHeader/>

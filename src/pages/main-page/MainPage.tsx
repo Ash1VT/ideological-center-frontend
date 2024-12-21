@@ -6,38 +6,18 @@ import Footer from 'src/components/footer/Footer'
 import Section from './section/Section'
 import Calendar from 'src/pages/events-page/events-calendar/Calendar'
 import EventsSection from './events-section/EventsSection'
-import { EventModel } from './events-section/event-card/EventCard.props'
 import MuseumSection from './museum-section/MuseumSection'
 import AboutUsSection from './about-us-section/AboutUsSection'
 import PartnersSection from './partners-section/PartnersSection'
 import LocationSection from './location-section/LocationSection'
 import { MainPageProps } from './MainPage.types'
+import { useSelector } from 'react-redux'
+import { RootState } from 'src/redux/store'
 
 
 const MainPage = ({navbarItems} : MainPageProps) => {
 
-    const events: EventModel[] = [
-        {
-            id: 1,
-            title: 'Мероприятие 1',
-            description: 'Описание мероприятия 1',
-            image: '/images/test.jpg',
-            link: '',
-            location: 'Москва, Россия',
-            startDate: '2023-04-01',
-            endDate: '2023-04-10'
-        },
-        {
-            id: 2,
-            title: 'Мероприятие 1',
-            description: 'Описание мероприятия 1',
-            image: '/images/test.jpg',
-            link: '',
-            location: 'Москва, Россия',
-            startDate: '2023-04-01',
-            endDate: '2023-04-10'
-        }
-    ]
+    const events = useSelector((state: RootState) => state.eventsMainReducer.events)
 
     const partners = [
         {name: 'Приход Храма Собора Всех Белорусских Святых', image: './images/partners/sobor.png', link: 'https://belsobor.by/'},
@@ -49,7 +29,7 @@ const MainPage = ({navbarItems} : MainPageProps) => {
 
     return (
         <div className={styles.container}>
-            <Navbar logo='/images/logo.png' menuItems={navbarItems}/>   
+            <Navbar logo='./images/logo.png' menuItems={navbarItems}/>   
             <BirdBackground/>
             <div className={styles.sections}>
                 <AboutUsSection/>

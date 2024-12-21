@@ -4,6 +4,7 @@ import { EventCardProps } from './EventCard.props'
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PlaceIcon from '@mui/icons-material/Place';
 import { useNavigate } from 'react-router-dom';
+import { formatDateDMY, formatDateYMD } from 'src/utils/date';
 
 const EventCard = ({event} : EventCardProps) => {
     const navigate = useNavigate()
@@ -12,7 +13,8 @@ const EventCard = ({event} : EventCardProps) => {
         navigate(`/events/${event.id}`)
     }
 
-    const eventInterval = `${event.startDate} - ${event.endDate}`
+    const eventInterval = `${formatDateDMY(event.startDate,'.')} - ${formatDateDMY(event.endDate, '.')}`
+
     return (
         <div className={styles.container} onClick={handleClick}>
             <div className={styles.image}>

@@ -1,7 +1,7 @@
 import { CustomDateInputProps } from "../CustomInputs.types"
 import styles from '../CustomInputs.module.scss'
 import classnames from "classnames"
-import { formatDate } from "src/utils/date"
+import { formatDateYMD } from "src/utils/date"
 
 const CustomDateInput = ({label, placeholder, requiredLabel, value, error, setValue}: CustomDateInputProps) => {
 
@@ -16,7 +16,7 @@ const CustomDateInput = ({label, placeholder, requiredLabel, value, error, setVa
                     {requiredLabel && <span>*</span>}
                 </div>
             )}
-            <input type='date' className={inputClass} placeholder={placeholder} value={value && formatDate(value)} onChange={(e) => setValue(new Date(e.target.value))}/>
+            <input type='date' className={inputClass} placeholder={placeholder} value={value && formatDateYMD(value)} onChange={(e) => setValue(new Date(e.target.value))}/>
         </div>
     )
 }

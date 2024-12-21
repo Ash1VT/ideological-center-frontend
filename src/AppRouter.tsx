@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
+import { BrowserRouter, HashRouter, Route, Router, Routes } from 'react-router-dom'
 import MainPage from './pages/main-page/MainPage'
 import EventsPage from './pages/events-page/EventsPage'
 import EventPage from './pages/event-page/EventPage'
@@ -21,13 +21,13 @@ const AppRouter = () => {
     ]
 
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Routes>
                 <Route path="/" element={<MainPage navbarItems={navbarMenuItems}/>} />
                 <Route path="/events" element={<EventsPage navbarItems={navbarMenuItems}/>} />
                 <Route path="/events/:id" element={<EventPage navbarItems={navbarMenuItems}/>} />
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 

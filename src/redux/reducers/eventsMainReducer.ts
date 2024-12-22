@@ -37,34 +37,6 @@ const initialState: EventsState = {
             startDate: new Date(Date.now()),
             endDate: new Date(Date.now()),
             state: EventState.Passed
-        },
-        {
-            id: 1,
-            title: 'Мероприятие 1',
-            description: 'Описание мероприятия 1',
-            shortDescription: 'Краткое описание мероприятия 1',
-            participants: 'Участники',
-            coordinatorContact: 'Контакты координатора',
-            image: './images/test.jpg',
-            link: '',
-            location: '',
-            startDate: new Date(Date.now()),
-            endDate: new Date(Date.now()),
-            state: EventState.Passed
-        },
-        {
-            id: 2,
-            title: 'Мероприятие 1',
-            description: 'Описание мероприятия 1',
-            shortDescription: 'Краткое описание мероприятия 1',
-            participants: 'Участники',
-            coordinatorContact: 'Контакты координатора',
-            image: './images/test.jpg',
-            link: '',
-            location: '',
-            startDate: new Date(Date.now()),
-            endDate: new Date(Date.now()),
-            state: EventState.Passed
         }
     ],
     error: null

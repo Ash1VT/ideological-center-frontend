@@ -188,7 +188,7 @@ export const getMonthDays = (month: number, year: number): CalendarDayModel[] =>
     // Дополнение ячеек днями следующего месяца, чтобы заполнить последнюю строку
     const remainingCells: number = (7 - (days.length % 7)) % 7;
     for (let i = 1; i <= remainingCells; i++) {
-        days.push(getDay(cur_id, i, month + 1, year, CalendarDayType.NextMonthDay));
+        days.push(getDay(cur_id, i, month === 11 ? 0 : month + 1, month === 11 ? year + 1 : year, CalendarDayType.NextMonthDay));
         cur_id++;
     }
     

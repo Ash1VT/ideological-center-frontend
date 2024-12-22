@@ -1,5 +1,5 @@
 import { MenuItem } from "src/components/navbar/Navbar.types"
 
-export type EventsPageProps = {
+export type PageProps = {
     navbarItems: MenuItem[]
 }

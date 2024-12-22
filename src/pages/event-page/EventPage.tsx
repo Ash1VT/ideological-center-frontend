@@ -3,15 +3,15 @@ import styles from './EventPage.module.scss'
 import Navbar from 'src/components/navbar/Navbar'
 import PageHeader from 'src/components/page-header/PageHeader'
 import Footer from 'src/components/footer/Footer'
-import { EventPageProps } from './EventPage.types'
 import { EventModel, EventState } from 'src/redux/models/events'
 import EventHeader from './event-header/EventHeader'
 import EventDescription from './event-description/EventDescription'
 import EventImage from './event-image/EventImage'
 import EventInfo from './event-info/EventInfo'
 import EventForm from './event-form/EventForm'
+import { PageProps } from '../Page.props'
 
-const EventPage = ({navbarItems}: EventPageProps) => {
+const EventPage = () => {
 
     const event: EventModel = {
         id: 1,
@@ -31,20 +31,16 @@ const EventPage = ({navbarItems}: EventPageProps) => {
 
     return (
         <div className={styles.container}>
-            <Navbar logo='./images/logo.png' menuItems={navbarItems}/>
-            <div className={styles.content}>
-                <PageHeader/>
-                <div className={styles.event}>
-                    <EventHeader event={event}/>
-                    <div className={styles.info}>
-                        <EventImage image={event.image}/>
-                        <EventDescription event={event}/>
-                        <EventInfo event={event}/>
-                        <EventForm/>
-                    </div>
+            <PageHeader title='Афиша мероприятий' image='./images/pages/events.jpg'/>
+            <div className={styles.event}>
+                <EventHeader event={event}/>
+                <div className={styles.info}>
+                    <EventImage image={event.image}/>
+                    <EventDescription event={event}/>
+                    <EventInfo event={event}/>
+                    <EventForm/>
                 </div>
             </div>
-            <Footer/>
         </div>
     )
 }

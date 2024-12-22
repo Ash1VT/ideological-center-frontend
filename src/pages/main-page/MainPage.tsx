@@ -10,12 +10,12 @@ import MuseumSection from './museum-section/MuseumSection'
 import AboutUsSection from './about-us-section/AboutUsSection'
 import PartnersSection from './partners-section/PartnersSection'
 import LocationSection from './location-section/LocationSection'
-import { MainPageProps } from './MainPage.types'
 import { useSelector } from 'react-redux'
 import { RootState } from 'src/redux/store'
+import { PageProps } from '../Page.props'
 
 
-const MainPage = ({navbarItems} : MainPageProps) => {
+const MainPage = () => {
 
     const events = useSelector((state: RootState) => state.eventsMainReducer.events)
 
@@ -29,7 +29,6 @@ const MainPage = ({navbarItems} : MainPageProps) => {
 
     return (
         <div className={styles.container}>
-            <Navbar logo='./images/logo.png' menuItems={navbarItems}/>   
             <BirdBackground/>
             <div className={styles.sections}>
                 <AboutUsSection/>
@@ -38,7 +37,6 @@ const MainPage = ({navbarItems} : MainPageProps) => {
                 <PartnersSection partners={partners}/>
                 <LocationSection/>
             </div>
-            <Footer/>
         </div>
     )
 }

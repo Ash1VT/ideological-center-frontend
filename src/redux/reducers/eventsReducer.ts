@@ -47,7 +47,7 @@ const initialState: EventsState = {
             year: 2022,
             events: [
                 {
-                    id: 1,
+                    id: 3,
                     title: 'Мероприятие 1',
                     description: 'Описание мероприятия 1',
                     shortDescription: 'Краткое описание мероприятия 1',
@@ -61,7 +61,7 @@ const initialState: EventsState = {
                     state: EventState.Passed
                 },
                 {
-                    id: 2,
+                    id: 4,
                     title: 'Мероприятие 1',
                     description: 'Описание мероприятия 1',
                     shortDescription: 'Краткое описание мероприятия 1',

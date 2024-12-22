@@ -1,0 +1,25 @@
+.container {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #eef0ef;
+    text-align: center;
+    display: block;
+    transition: border-color 0.3s ease-in;
+
+    p {
+        font-family: 'Kanit', sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        transition: color 0.3s ease-in;
+    }
+
+    &:hover {
+        border-color: #007bff;
+        // color: #fff;
+
+
+        p {
+            color: #007bff;
+        }
+    }
+}

@@ -29,17 +29,17 @@ const EventInfo = ({event} : EventInfoProps) => {
         {
             id: 0,
             text: event.location,
-            image: '/images/event/map.png'
+            image: './images/event/map.png'
         },
         {
             id: 1,
             text: event.participants,
-            image: '/images/event/round-table.png'
+            image: './images/event/round-table.png'
         },
         {
             id: 2,
             text: event.coordinatorContact,
-            image: '/images/event/information.png'
+            image: './images/event/information.png'
         }
     ]
 

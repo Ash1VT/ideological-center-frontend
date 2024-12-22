@@ -1,10 +1,14 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import eventsReducer from "./reducers/eventsReducer";
 import eventsMainReducer from "./reducers/eventsMainReducer";
+import mediaReducer from "./reducers/mediaReducer";
+import mediaCategoriesReducer from "./reducers/mediaCategoriesReducer";
 
 const rootReducer = combineReducers({
     eventsReducer,
-    eventsMainReducer
+    eventsMainReducer,
+    mediaReducer,
+    mediaCategoriesReducer
 })
 
 

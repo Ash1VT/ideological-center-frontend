@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import useOutsideClick from 'src/hooks/useOutsideClick';
 import { useNavigate } from 'react-router-dom';
 
-const DropDown = ({ title, items, triggerClassName, titleClassName, itemContainerClassName,itemClassName, iconClassName } : DropDownProps) => {
+const DropDown = ({ title, items, triggerClassName, titleClassName, itemContainerClassName,itemClassName, iconClassName, onItemClick } : DropDownProps) => {
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false);
   
@@ -20,7 +20,7 @@ const DropDown = ({ title, items, triggerClassName, titleClassName, itemContaine
   };
 
   const handleClick = (link: string) => {
-      navigate(link);
+      onItemClick(link);
   }
 
   return (

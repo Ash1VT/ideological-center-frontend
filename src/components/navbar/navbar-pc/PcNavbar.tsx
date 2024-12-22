@@ -28,7 +28,8 @@ const PcNavbar = ({logo, menuItems}: NavbarProps) => {
                                         items={item.subitems} 
                                         triggerClassName={styles.title} 
                                         titleClassName={styles.title__font} 
-                                        itemClassName={classnames(styles.subtitle, styles.subtitle__font)}/>
+                                        itemClassName={classnames(styles.subtitle, styles.subtitle__font)}
+                                        onItemClick={handleClick}/>
                             )
                         }
                         return (

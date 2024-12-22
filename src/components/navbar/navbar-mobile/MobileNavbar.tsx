@@ -6,9 +6,10 @@ import DropDown from '../dropdown/DropDown';
 import classnames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import useOutsideClick from 'src/hooks/useOutsideClick';
+import { useNavigate } from 'react-router-dom';
 
 const MobileNavbar = ({logo, menuItems} : NavbarProps) => {
-
+    const navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(false);
 
     const ref = useOutsideClick<HTMLDivElement>(() => {
@@ -19,8 +20,13 @@ const MobileNavbar = ({logo, menuItems} : NavbarProps) => {
         setIsOpen(!isOpen);
     }
 
+    const handleClick = (link: string) => {
+        setIsOpen(false);
+        navigate(link);
+    }
+
     return (
-        <div className={styles.container} ref={ref}>
+        <div className={styles.container}>
             <div className={styles.navbar}>
                 <div className={styles.logo}>
                     <img src={logo}></img>
@@ -39,6 +45,7 @@ const MobileNavbar = ({logo, menuItems} : NavbarProps) => {
                 {isOpen && (
                     <>
                         <motion.div 
+                                ref={ref}
                                 className={styles.menu}
                                 initial={{ opacity: 0}}
                                 animate={{ opacity: 1, transform: 'translateX(-100%)' }}
@@ -47,19 +54,22 @@ const MobileNavbar = ({logo, menuItems} : NavbarProps) => {
                             {menuItems.map((item, index) => {
                                 if (item.subitems) {
                                     return (
-                                        <DropDown title={item.name} items={item.subitems} 
+                                        <DropDown key={index} title={item.name} items={item.subitems} 
                                                 triggerClassName={styles.title} 
                                                 titleClassName={styles.title__font} 
-                                                itemClassName={classnames(styles.subtitle, styles.subtitle__font)}/>
+                                                itemClassName={classnames(styles.subtitle, styles.subtitle__font)}
+                                                onItemClick={handleClick}
+                                                />
                                     )
                                 }
                                 return (
-                                    <div key={index} className={classnames(styles.title, styles.title__font)}>{item.name}</div>
+                                    <div key={index} className={classnames(styles.title, styles.title__font)} onClick={() => handleClick(item.link)}>{item.name}</div>
                                 )
                             }
                             )}
                         </motion.div>
-                        <motion.div className={styles.overlay}
+                        <motion.div 
+                                    className={styles.overlay}
                                     initial={{ opacity: 0}} 
                                     animate={{ opacity: 1 }} 
                                     exit={{ opacity: 0 }}/> 

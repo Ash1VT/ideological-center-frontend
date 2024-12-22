@@ -8,5 +8,6 @@ export type DropDownProps = {
     iconClassName?: string;
     itemContainerClassName?: string;
     itemClassName?: string;
+    onItemClick: (link: string) => void
 
 }

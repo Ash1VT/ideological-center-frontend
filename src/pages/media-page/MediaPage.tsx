@@ -30,7 +30,7 @@ const MediaPage = () => {
     }
 
     return (
-        <div className={styles.container}>
+        <div key={mediaType.slug} className={styles.container}>
             <PageHeader title={mediaType.headerTitle} image={mediaType.headerImage}/>
             <div className={styles.documents}>
                 <MediaSection categoriesTitle={mediaType.categoriesTitle} categories={documentCategories} media={documents} onMediaClick={onMediaClick} onShowMore={async () => {}}/>

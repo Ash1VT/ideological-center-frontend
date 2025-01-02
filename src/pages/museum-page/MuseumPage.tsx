@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MethodicDocumentPage = () => {
+const MuseumPage = () => {
     return (
         <div>
         
@@ -8,4 +8,4 @@ const MethodicDocumentPage = () => {
     )
 }
 
-export default MethodicDocumentPage
+export default MuseumPage

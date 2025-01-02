@@ -11,14 +11,14 @@ import AppRouter from './AppRouter';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import { HashRouter } from 'react-router-dom';
+import ScrollToTop from './ScrollToTop';
 
 function App() {
     const navbarMenuItems = [
         {name: 'Главная', link: '/'},
-        {name: 'О нас', link: ''},
+        {name: 'О нас', link: '/about'},
         {name: 'Афиша событий', link: '/events'},
-        // {name: 'Партнеры', link: ''},
-        {name: 'Музей', link: ''},
+        {name: 'Музей', link: '/museum'},
         {name: 'Библиотека', link: '', subitems: [
             {name: 'Нормативные документы', link: '/normdocs'},
             {name: 'Методические документы', link: '/methodocs'},
@@ -31,6 +31,7 @@ function App() {
     return (
         <YMaps query={{load: "package.full", apikey: process.env.YANDEX_MAPS_API_KEY}}>
             <HashRouter>
+                <ScrollToTop/>
                 <div className={styles.container}>
                     <Navbar logo='./images/logo.png' menuItems={navbarMenuItems}/>
                     <AppRouter/>

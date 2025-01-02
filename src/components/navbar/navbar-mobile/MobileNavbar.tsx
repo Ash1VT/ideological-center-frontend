@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import styles from './MobileNavbar.module.scss'
 import { NavbarProps } from '../Navbar.types'
 import MenuIcon from '@mui/icons-material/Menu';
@@ -12,9 +12,6 @@ const MobileNavbar = ({logo, menuItems} : NavbarProps) => {
     const navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(false);
 
-    const ref = useOutsideClick<HTMLDivElement>(() => {
-        setIsOpen(false);
-    })
     
     const onMenuOpened = () => {
         setIsOpen(!isOpen);
@@ -45,7 +42,6 @@ const MobileNavbar = ({logo, menuItems} : NavbarProps) => {
                 {isOpen && (
                     <>
                         <motion.div 
-                                ref={ref}
                                 className={styles.menu}
                                 initial={{ opacity: 0}}
                                 animate={{ opacity: 1, transform: 'translateX(-100%)' }}
@@ -63,12 +59,13 @@ const MobileNavbar = ({logo, menuItems} : NavbarProps) => {
                                     )
                                 }
                                 return (
-                                    <div key={index} className={classnames(styles.title, styles.title__font)} onClick={() => handleClick(item.link)}>{item.name}</div>
+                                    <div key={`rqweqeqe-${index}`} className={classnames(styles.title, styles.title__font)} onClick={() => handleClick(item.link)}>{item.name}</div>
                                 )
                             }
                             )}
                         </motion.div>
                         <motion.div 
+                                    onClick={() => setIsOpen(false)}
                                     className={styles.overlay}
                                     initial={{ opacity: 0}} 
                                     animate={{ opacity: 1 }} 

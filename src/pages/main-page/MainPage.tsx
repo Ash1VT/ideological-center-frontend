@@ -12,7 +12,6 @@ import PartnersSection from './partners-section/PartnersSection'
 import LocationSection from './location-section/LocationSection'
 import { useSelector } from 'react-redux'
 import { RootState } from 'src/redux/store'
-import { PageProps } from '../Page.props'
 
 
 const MainPage = () => {

@@ -5,7 +5,6 @@ import Navbar from 'src/components/navbar/Navbar'
 import EventsMenu from './events-menu/EventsMenu'
 import EventsMenuContent from './events-menu-content/EventsMenuContent'
 import PageHeader from 'src/components/page-header/PageHeader'
-import { PageProps } from '../Page.props'
 
 const EventsPage = () => {
     const [selectedItem, setSelectedItem] = useState(1)

@@ -9,7 +9,6 @@ import EventDescription from './event-description/EventDescription'
 import EventImage from './event-image/EventImage'
 import EventInfo from './event-info/EventInfo'
 import EventForm from './event-form/EventForm'
-import { PageProps } from '../Page.props'
 
 const EventPage = () => {
 

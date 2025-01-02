@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { MediaModel } from "../models/media"
+import { MediaModel, MediaType } from "../models/media"
 
 interface MediaState {
     isLoading: boolean
@@ -19,7 +19,8 @@ const initialState: MediaState = {
                 name: 'Категория 1'
             },
             image: './images/documents/doc-gray.png',
-            link: ''
+            link: '',
+            type: MediaType.METHODIC
         },
         {
             id: 2,
@@ -30,7 +31,8 @@ const initialState: MediaState = {
                 name: 'Категория 1'
             },
             image: './images/documents/doc-blue.jpg',
-            link: ''
+            link: '',
+            type: MediaType.METHODIC
         },
         {
             id: 3,
@@ -41,7 +43,8 @@ const initialState: MediaState = {
                 name: 'Категория 1'
             },
             image: './images/documents/doc-yellow.jpg',
-            link: ''
+            link: '',
+            type: MediaType.METHODIC
         },
         {
             id: 4,
@@ -52,7 +55,8 @@ const initialState: MediaState = {
                 name: 'Категория 1'
             },
             image: './images/documents/doc-yellow.jpg',
-            link: ''
+            link: '',
+            type: MediaType.METHODIC
         },
         {
             id: 5,
@@ -63,7 +67,8 @@ const initialState: MediaState = {
                 name: 'Категория 1'
             },
             image: './images/documents/doc-yellow.jpg',
-            link: ''
+            link: '',
+            type: MediaType.METHODIC
         },
         {
             id: 6,
@@ -74,7 +79,8 @@ const initialState: MediaState = {
                 name: 'Категория 1'
             },
             image: './images/documents/doc-yellow.jpg',
-            link: ''
+            link: '',
+            type: MediaType.METHODIC
         }
     ],
     error: null

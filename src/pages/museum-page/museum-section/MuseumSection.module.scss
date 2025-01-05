@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+}
+
+.content {
+    display: grid;
+    padding: 80px;
+    box-shadow: 2px 8px 18px 8px rgba(55, 66, 59, 0.08);
+    border-radius: 20px;
+}
+
+.title {
+    font-family: 'Alegreya', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 1.2;
+    // padding-bottom: 20px;
+    border-bottom: 1px solid #eef0ef;
+
+    h2 {
+        margin: 0;
+    }
+}

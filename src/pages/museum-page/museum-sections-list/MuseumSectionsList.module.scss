@@ -1,0 +1,15 @@
+.sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+    row-gap: 30px;
+}
+
+.title {
+    font-family: 'Kanit', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #007bff;
+    text-transform: uppercase;
+    text-align: center;
+}

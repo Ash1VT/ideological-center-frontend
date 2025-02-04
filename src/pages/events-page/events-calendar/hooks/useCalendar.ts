@@ -1,27 +1,28 @@
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { CalendarDayModel } from '../calendar-day/CalendarDay.props'
 import { getMonthDays } from '../../../../utils/calendar'
+import { CalendarDayModel, CalendarMonthModel } from 'src/models/calendar';
 
-const useCalendar = (month: number, year: number) => {
-    const [curMonth, setCurMonth] = useState(month);
-    const [curYear, setCurYear] = useState(year);
+const useCalendar = (month: number, year: number, onMonth: (month: number) => Promise<void>, onYear: (year: number) => Promise<void>) => {
+    const [selectedMonth, setSelectedMonth] = useState(month);
+    const [selectedYear, setSelectedYear] = useState(year);
     const [selectedDay, setSelectedDay] = useState<CalendarDayModel | null>(null);
-    const [monthsData, setMonthsData] = useState<{ month: number; days: CalendarDayModel[] }[]>([]);
+    const [monthsData, setMonthsData] = useState<CalendarMonthModel[]>([]);
 
     useEffect(() => {
         Promise.all(
             Array.from({ length: 12 }, (_, i) => ({
                          month: i,
-                         days: getMonthDays(i, curYear),
+                         days: getMonthDays(i, selectedYear),
             }))
         ).then((data) => {
             setMonthsData(data);
         });
-    }, [curYear]);
+    }, [selectedYear]);
 
-    const onMonthSelected = (month: number) => {
+    const onMonthSelected = async (month: number) => {
         setSelectedDay(null);
-        setCurMonth(month);
+        setSelectedMonth(month);
+        await onMonth(month);
     }
 
     const onDaySelected = (day: CalendarDayModel) => {
@@ -33,25 +34,20 @@ const useCalendar = (month: number, year: number) => {
         setSelectedDay(day);
     }
 
-    const onClickNextYear = () => {
+    const onYearSelected = async (year: number) => {
         setSelectedDay(null);
-        setCurYear(curYear + 1);
-    }
-
-    const onClickPrevYear = () => {
-        setSelectedDay(null);
-        setCurYear(curYear - 1);
+        setSelectedYear(year);
+        await onYear(year);
     }
 
     return {
-        curMonth,
-        curYear,
+        selectedMonth,
+        selectedYear,
         selectedDay,
         monthsData,
         onMonthSelected,
         onDaySelected,
-        onClickNextYear,
-        onClickPrevYear
+        onYearSelected
     }
     
 }

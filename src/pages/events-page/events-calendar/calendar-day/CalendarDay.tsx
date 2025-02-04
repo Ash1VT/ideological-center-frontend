@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './CalendarDay.module.scss'
-import { CalendarDayProps, CalendarDayType } from './CalendarDay.props'
+import { CalendarDayProps } from './CalendarDay.props';
+import { CalendarDayType } from 'src/models/calendar';
 
 const CalendarDay = ({day, hasEvents, isSelected, onDaySelected}: CalendarDayProps) => {
     let styleClasses = [styles.day];

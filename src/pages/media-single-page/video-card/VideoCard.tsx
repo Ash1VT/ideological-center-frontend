@@ -6,7 +6,7 @@ import styles from './VideoCard.module.scss'
 const VideoCard = ({video} : VideoCardProps) => {
     return (
         <div className={styles.container}>
-            <ReactPlayer className={styles.player} controls url={video.link} />
+            <ReactPlayer className={styles.player} controls url={video.url} />
         </div>
     )
 }

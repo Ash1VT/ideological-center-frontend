@@ -1,7 +1,7 @@
 export type CarouselSliderItem = {
-    image: string
+    image?: string
     title: string
-    description: string
+    description?: string
 }
 
 export type CarouselSliderProps = {

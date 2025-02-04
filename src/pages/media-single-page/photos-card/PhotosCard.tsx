@@ -16,7 +16,7 @@ const PhotosCard = ({photos, descriptionTitle, buttonLabel} : PhotosCardProps) =
         <div className={styles.container}>
             <div className={styles.content}>
                 <div className={styles.image}>
-                    <img src={photos.image}></img>
+                    <img src={photos.imageUrl}></img>
                 </div>
                 <div className={styles.title}>
                     <p>{descriptionTitle}</p>
@@ -35,17 +35,17 @@ const PhotosCard = ({photos, descriptionTitle, buttonLabel} : PhotosCardProps) =
                 onSwiper={() => console.log('Test')}
                 onSlideChange={() => console.log('slide change')}
                 >
-                    {photos.photoImages?.map((photoImage) => {
+                    {photos.photos?.map((photoImage) => {
                         return (
                             <SwiperSlide key={photoImage.id} className={styles.slide}>
                                 <div className={styles.image}>
-                                    <img src={photoImage.image}/>
+                                    <img src={photoImage.imageUrl}/>
                                 </div>
                             </SwiperSlide>
                         )
                     })}
             </Swiper>
-            <DownloadButton name={photos.name} title={buttonLabel} link={photos.link}/>
+            <DownloadButton name={photos.name} title={buttonLabel} link={photos.url}/>
         </div>
     )
 }

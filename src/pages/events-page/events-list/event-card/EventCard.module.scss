@@ -19,7 +19,7 @@
     padding: 20px 30px;
     border-radius: 20px 0 0 20px;
 
-    min-width: 168px;
+    min-width: 200px;
     color: #fff;
     .date {
         display: flex;
@@ -77,13 +77,13 @@
     display: grid;
     grid-template-rows: 2fr 1fr;
     grid-template-columns: 2fr 1fr;
-
+    min-width: 600px;
     border-radius: 0 20px 0 0;
 
     font-family: 'Aleheya', sans-serif;
     font-size: 18px;
 
-    max-width: 600px;
+    // max-width: 600px;
 
 
     h3 {
@@ -203,7 +203,8 @@
     justify-content: flex-end;
     align-items: center;
 
-    button {
+    a {
+        text-decoration: none;
         position: absolute;
         min-width: 200px;
         max-width: 250px;

@@ -11,13 +11,12 @@ import AboutUsSection from './about-us-section/AboutUsSection'
 import PartnersSection from './partners-section/PartnersSection'
 import LocationSection from './location-section/LocationSection'
 import { useSelector } from 'react-redux'
-import { RootState } from 'src/redux/store'
-
+import useFetchData from 'src/hooks/useFetchData'
+import { EventService } from 'src/services/EventService'
+import { EventModel } from 'src/models/events'
+import { ScrollRestoration } from 'react-router-dom'
 
 const MainPage = () => {
-
-    const events = useSelector((state: RootState) => state.eventsMainReducer.events)
-
     const partners = [
         {name: 'Приход Храма Собора Всех Белорусских Святых', image: './images/partners/sobor.png', link: 'https://belsobor.by/'},
         {name: 'Государственное учреждение образования «Гродненский государственный университет имени Янки Купалы»', image: './images/partners/grsu2.svg', link: 'https://grsu.by/'},
@@ -31,7 +30,7 @@ const MainPage = () => {
             <BirdBackground/>
             <div className={styles.sections}>
                 <AboutUsSection/>
-                <EventsSection events={events}/>
+                <EventsSection/>
                 <MuseumSection/>
                 <PartnersSection partners={partners}/>
                 <LocationSection/>

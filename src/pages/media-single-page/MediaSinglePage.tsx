@@ -2,37 +2,26 @@ import React, { useCallback } from 'react'
 import PageHeader from 'src/components/page-header/PageHeader'
 import CommonCard from './common-card/CommonCard'
 import styles from './MediaSinglePage.module.scss'
-import { MediaModel, MediaType } from 'src/redux/models/media'
+import { MediaModel, MediaType } from 'src/models/media'
 import { useParams } from 'react-router-dom'
 import { mediaTypes } from 'src/constants/media'
 import PhotosCard from './photos-card/PhotosCard'
 import VideoCard from './video-card/VideoCard'
+import MediaService from 'src/services/MediaService'
+import useFetchData from 'src/hooks/useFetchData'
+import Loader from 'src/components/loader/Loader'
+import NotFoundPage from '../not-found-page/NotFoundPage'
 
 const MediaSinglePage = () => {
     const { mediaTypeSlug, mediaId } = useParams()
     
     const mediaType = mediaTypes.find(m => m.slug === mediaTypeSlug)
     
-    const media: MediaModel = {
-        id: 1,
-        name: "Методика документа",
-        description: "Методика документа Методика документа Методика документа Методика документа Методика документа Методика документа Методика документа Методика документа Методика документа Методика документа Методика документа Методика документаМетодика документа Методика документа Методика документа Методика документа Методика документа Методика документа",
-        image: "./images/documents/doc-blue.jpg",
-        link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        // link: "./test.mp4",
-        type: MediaType.PRESENTATION,
-        photoImages: [
-            {
-                id: 1,
-                image: './images/documents/doc-blue.jpg'
-            },
-            {
-                id: 2,
-                image: './images/documents/doc-blue.jpg'
-            }
-        ]
-    }
-
+    const {isLoading: isMediaLoading, data: media} = useFetchData<MediaModel | null>(async () => {
+        const data = await MediaService.retrieveMediaById(parseInt(mediaId!))
+        return data
+    }, [mediaId])
+    
     const getMediaCard = useCallback((media: MediaModel) => {
         if (media.type === MediaType.METHODIC) {
             return <CommonCard document={media} descriptionTitle='Описание документа' buttonLabel='Скачать документ'/>
@@ -62,18 +51,26 @@ const MediaSinglePage = () => {
     }, [media])
 
 
-    if (!mediaType || !media || !getMediaCard(media)) {
-        return <div>404</div>
+    if (!mediaType) {
+        return <NotFoundPage/>
     }
 
-    
+    if (!isMediaLoading && (!media)){
+        return <NotFoundPage/>
+    }
 
     return (
         <div className={styles.container}>
-            <PageHeader title={media.name} image={mediaType.headerImage}/>
-            <div className={styles.media}>
-                {getMediaCard(media)}
-            </div>
+            <Loader isLoading={isMediaLoading}>
+                {media && 
+                    <>
+                        <PageHeader title={media?.name} image={mediaType.headerImage}/>
+                        <div className={styles.media}>
+                            {getMediaCard(media)}
+                        </div>
+                    </>
+                }
+            </Loader>
         </div>
     )
 }

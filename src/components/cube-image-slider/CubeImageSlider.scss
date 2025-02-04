@@ -37,12 +37,14 @@
 .cube__image__swiper__slide {
     background-position: center;
     background-size: cover;
+    height: 375px !important;
 }
 
 
 .cube__image {
     display: block;
     width: 100%;
+    height: 100%;
 }
   
 .swiper-pagination {

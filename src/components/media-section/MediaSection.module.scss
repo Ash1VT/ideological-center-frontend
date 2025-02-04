@@ -3,4 +3,22 @@
     display: flex;
     flex-direction: column;
     row-gap: 50px;
+    min-width: 600px;
+}
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+
+    h2 {
+        font-family: 'Kanit', sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+        color: #007bff;
+        text-transform: uppercase;
+        text-align: center;
+    }
 }

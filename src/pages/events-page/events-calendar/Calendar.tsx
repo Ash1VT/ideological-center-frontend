@@ -1,40 +1,33 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import { useCallback, useMemo } from 'react'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import styles from './Calendar.module.scss'
 import { CalendarProps } from './Calendar.props';
 import CalendarDay from './calendar-day/CalendarDay';
-import { CalendarDayModel, CalendarDayProps, CalendarDayType } from './calendar-day/CalendarDay.props';
-import Holidays from 'date-holidays';
-import { getDaysInMonth, getFirstDayOfMonth, getMonthDays, getMonthName, getSeasonImageSrc, weekDays, weekDaysShortcuts } from '../../../utils/calendar';
-import useCalendar from './hooks/useCalendar';
+import { getSeasonImageSrc, weekDaysShortcuts } from '../../../utils/calendar';
 import CalendarMonth from './calendar-month/CalendarMonth';
 import EventsCard from './events-card/EventsCard';
-import { EventShortModel } from './events-card/EventCard.types';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
+import { CalendarDayType } from 'src/models/calendar';
 
 
-const Calendar = ({month, year}: CalendarProps) => {
-    const events: EventShortModel[] = [ 
-        {
-            id: 1,
-            title: 'Дзень Дзень Дзень ДзеньДзень ДзеньДзень Дзень',
-        },
-        {
-            id: 2,
-            title: 'Event 2',
-        },
-        {
-            id: 3,
-            title: 'Event 3',
-        },
-        {
-            id: 4,
-            title: 'Event 4',
-        },
-    ]
+const Calendar = ({monthsData, selectedDay, selectedMonth, selectedYear, events, onCalendarDaySelected, onCalendarMonthSelected, onCalendarYearSelected}: CalendarProps) => {
+    const eventsList = useMemo(() => {
+        return events.find((event) => {
+            return event.year === selectedYear
+        })?.events
+    }, [events])
 
-    const  { curMonth, curYear, selectedDay, monthsData, onMonthSelected, onDaySelected, onClickPrevYear, onClickNextYear } = useCalendar(month, year);
+    const getEventsCardComponent = useCallback(() => {
+        if (!selectedDay) {
+            return
+        }
+        const events = eventsList ? eventsList.filter((event) => event.startDate <= new Date(selectedYear, selectedMonth, selectedDay.dayNum) && event.endDate >= new Date(selectedYear, selectedMonth, selectedDay.dayNum)) : []
+
+        return <EventsCard key='event'
+                           events={events}
+                           day={selectedDay}/>
+    }, [events, selectedDay])
 
     const calendarBorderStyle = {
         borderRadius: selectedDay ? '0 20px 20px 0' : '20px 20px 20px 20px'
@@ -46,27 +39,27 @@ const Calendar = ({month, year}: CalendarProps) => {
                 <div className={styles.header}>
                     <div className={styles.year_container}>
                         <div className={styles.arrow_container}>
-                            <button className={styles.arrow_button} onClick={onClickPrevYear}>
+                            <button className={styles.arrow_button} onClick={() => onCalendarYearSelected(selectedYear - 1)}>
                                 <ArrowBackIosNewIcon className={styles.arrow_icon}/>
                             </button>
                         </div>
                         <div className={styles.year}>
-                        {curYear}
+                        {selectedYear}
                         </div>
                         <div className={styles.arrow_container}>
-                            <button className={styles.arrow_button} onClick={onClickNextYear}>
+                            <button className={styles.arrow_button} onClick={() => onCalendarYearSelected(selectedYear + 1)}>
                                 <ArrowForwardIosIcon className={styles.arrow_icon}/>
                             </button>
                         </div>
                     </div>
                     <div className={styles.monthes}>
                     {monthsData.map(data => 
-                        <CalendarMonth key={data.month} month={data.month} isSelected={curMonth === data.month} onMonthSelected={onMonthSelected}/>
+                        <CalendarMonth key={data.month} month={data.month} isSelected={selectedMonth === data.month} onMonthSelected={() => onCalendarMonthSelected(data.month)}/>
                     )}
                     </div>
                     <div className={styles.season}>
                         <div className={styles.image_container}>
-                            <img key={curMonth} className={styles.image} src={getSeasonImageSrc(curMonth)} alt='season'/>
+                            <img key={selectedMonth} className={styles.image} src={getSeasonImageSrc(selectedMonth)} alt='season'/>
                         </div>
                     </div>
                 </div>
@@ -82,7 +75,7 @@ const Calendar = ({month, year}: CalendarProps) => {
                         className={styles.monthsContainer}
                         style={
                                 { 
-                                    transform: `translateX(-${curMonth * 100}%)`,
+                                    transform: `translateX(-${selectedMonth * 100}%)`,
                                     animation: 'slide-in-up 0.5s ease' 
                                 }
                             }
@@ -90,14 +83,17 @@ const Calendar = ({month, year}: CalendarProps) => {
                         {monthsData.map((data) => (
                             <div key={data.month} className={styles.month}>
                                 <div className={styles.days}>
-                                    {data.days.map((day) => (
-                                        <CalendarDay key={`${data.month}.${day.id}`} 
+                                    {data.days.map((day) => {
+                                        return <CalendarDay key={`${data.month}.${day.id}`} 
                                                     day={day} 
                                                     isSelected={day.id === selectedDay?.id}
-                                                    hasEvents={true}
-                                                    onDaySelected={onDaySelected}
+                                                    hasEvents={eventsList && eventsList.length > 0  ? eventsList.some((event) => (!day.types.includes(CalendarDayType.NextMonthDay) && 
+                                                                                                       !day.types.includes(CalendarDayType.PrevMonthDay)) &&
+                                                                                                       event.startDate <= new Date(selectedYear, data.month, day.dayNum) && 
+                                                                                                       event.endDate >= new Date(selectedYear, data.month, day.dayNum)) : false}
+                                                    onDaySelected={onCalendarDaySelected}
                                                     />
-                                    ))}
+                                    })}
                                 </div>
                             </div>
                         ))}
@@ -105,10 +101,7 @@ const Calendar = ({month, year}: CalendarProps) => {
                 </div>
             </div>
             <AnimatePresence>
-                {selectedDay && <EventsCard 
-                                    key='event'
-                                    events={events}
-                                    day={selectedDay}/>}
+                {getEventsCardComponent()}
             </AnimatePresence>
         </div>
     )

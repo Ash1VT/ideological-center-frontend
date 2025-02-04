@@ -6,22 +6,23 @@ import { EventCardProps } from './EventCard.props';
 import { getMonthRusShortName } from 'src/utils/calendar';
 import NextPlanIcon from '@mui/icons-material/NextPlan';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
-import { EventState } from 'src/redux/models/events';
+import { EventStatus } from 'src/models/events';
 import PlaceIcon from '@mui/icons-material/Place';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const EventCard = ({event} : EventCardProps) => {
     const navigate = useNavigate()
 
-    const startDay = event.startDate.getDay()
+    const startDay = event.startDate.getDate()
     const startMonth = getMonthRusShortName(event.startDate.getMonth())
 
-    const endDay = event.endDate.getDay()
+    const endDay = event.endDate.getDate()
     const endMonth = getMonthRusShortName(event.endDate.getMonth())
 
     const handleClick = () => {
         navigate(`/events/${event.id}`)
     }
+
     const PassedStatus = () => {
         return (
             <div className={classnames(styles.status, styles.passed)}>
@@ -69,34 +70,34 @@ const EventCard = ({event} : EventCardProps) => {
     }, [event.endDate])
 
     const getEventStatus = useCallback(() => {
-        if (event.state === EventState.Planned) {
+        if (event.status === EventStatus.Planned) {
             return <PlannedStatus/>
         }
 
-        if (event.state === EventState.Passing) {
+        if (event.status === EventStatus.Passing) {
             return <PassingStatus/>
         }
         
-        if (event.state === EventState.Passed) {
+        if (event.status === EventStatus.Passed) {
             return <PassedStatus/>
         }
 
-    }, [event.state])
+    }, [event.status])
 
     const getInfoClassName = useCallback(() => {
-        if (event.state === EventState.Planned) {
+        if (event.status === EventStatus.Planned) {
             return styles.planned
         }
 
-        if (event.state === EventState.Passing) {
+        if (event.status === EventStatus.Passing) {
             return styles.passing
         }
         
-        if (event.state === EventState.Passed) {
+        if (event.status === EventStatus.Passed) {
             return styles.passed
         }
 
-    }, [event.state])
+    }, [event.status])
 
     return (
         <div className={styles.container}>
@@ -108,11 +109,11 @@ const EventCard = ({event} : EventCardProps) => {
                 {getEventEndDate()}
             </div>
             <div className={styles.image}>
-                <img src={event.image}></img>
+                <img src={event.imageUrl}></img>
             </div>
             <div className={styles.content}>
                 <div className={classnames(styles.info, getInfoClassName())}>
-                    <h3 className={styles.title}>{event.title}</h3>
+                    <h3 className={styles.title}>{event.name}</h3>
                     <p className={styles.description}>{event.shortDescription}</p>
                     <div className={styles.location}>
                         <p>{event.location}</p>
@@ -121,9 +122,9 @@ const EventCard = ({event} : EventCardProps) => {
                 </div>
                 {getEventStatus()}
                 <div className={styles.button}>
-                    <button onClick={() => {handleClick()}}>
+                    <Link to={`/events/${event.id}`} target='_blank'>
                         Подробнее
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import Holidays from "date-holidays";
-import { CalendarDayModel, CalendarDayType } from "../pages/events-page/events-calendar/calendar-day/CalendarDay.props";
+import { CalendarDayType, CalendarDayModel } from "src/models/calendar";
 
 const hd = new Holidays();
 hd.init('BY');

@@ -7,6 +7,8 @@ import styles from './EventForm.module.scss'
 import CustomTextInput from 'src/components/ui/custom-inputs/custom-text-input/CustomTextInput'
 import CustomDateInput from 'src/components/ui/custom-inputs/custom-date-input/CustomDateInput'
 import CustomPhoneInput from 'src/components/ui/custom-inputs/custom-phone-input/CustomPhoneInput'
+import { EventApplicationService } from 'src/services/EventApplicationService'
+import { EventFormProps } from './EventForm.props'
 
 interface FormValues {
     fio: string 
@@ -16,7 +18,7 @@ interface FormValues {
     studyOrganization: string
 }
 
-const EventForm = () => {
+const EventForm = ({eventId}: EventFormProps) => {
 
     const initialValues: FormValues = {
         fio: '',
@@ -35,13 +37,17 @@ const EventForm = () => {
         studyOrganization: Yup.string().required('Обязательное поле')
     })
 
+    const onSubmit = async (values: FormValues) => {
+        await EventApplicationService.createEventApplication(eventId, values)
+    }
+
     return (
         <EventSection title='Форма регистрации'>
             <Formik initialValues={initialValues}
                     validationSchema={validationSchema}
                     validateOnChange={false}
                     validateOnBlur={false}
-                    onSubmit={values => alert(values)}>
+                    onSubmit={onSubmit}>
                 {({values, errors, setFieldValue, submitForm}) => (
                     <Form>
                         <div className={styles.container}>

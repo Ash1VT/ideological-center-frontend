@@ -5,6 +5,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import TelegramIcon from '@mui/icons-material/Telegram';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -12,8 +13,8 @@ const Footer = () => {
             <div className={styles.content}>
                 <div className={styles.contacts}>
                     <h3 className={styles.title}>Контакты</h3>
-                    <p className={styles.email}>hello@example.com</p>
-                    <p className={styles.phone}>+7 (123) 456-78-90</p>
+                    <p className={styles.email}>belko.angelina@mail.ru</p>
+                    <p className={styles.phone}>+375 (29) 456-78-90</p>
                 </div>
                 <div className={styles.social}>
                     <button className={styles.button}>
@@ -34,16 +35,16 @@ const Footer = () => {
                         <h3>Навигация</h3>
                         <ul>
                             <li>
-                                <a href="#">Главная</a>
+                                <Link to={'/'}>Главная</Link>
                             </li>
                             <li>
-                                <a href="#">О нас</a>
+                                <Link to={'/about'}>О нас</Link>
                             </li>
                             <li>
-                                <a href="#">Афиша событий</a>
+                                <Link to={'/events'}>Афиша событий</Link>
                             </li>
                             <li>
-                                <a href="#">Музей</a>
+                                <Link to={'/museum'}>Музей</Link>
                             </li>
                         </ul>
                     </div>
@@ -51,19 +52,19 @@ const Footer = () => {
                         <h3>Библиотека</h3>
                         <ul>
                             <li>
-                                <a href="#">Нормативные документы</a>
+                                <Link to={'/normdocs'}>Нормативные документы</Link>
                             </li>
                             <li>
-                                <a href="#">Методические документы</a>
+                                <Link to={'/methodocs'}>Методические документы</Link>
                             </li>
                             <li>
-                                <a href="#">Обучающие материалы</a>
+                                <Link to={'/studymaterials'}>Обучающие материалы</Link>
                             </li>
                             <li>
-                                <a href="#">Презентации</a>
+                                <Link to={'/presentations'}>Презентации</Link>
                             </li>
                             <li>
-                                <a href="#">Фото и видео</a>
+                                <Link to={'/photovideo'}>Фото и видео</Link>
                             </li>
                         </ul>
                     </div>
@@ -72,7 +73,7 @@ const Footer = () => {
             <div className={styles.copyright}>
                     <div className={styles.copyright__year}>
                         <CopyrightIcon/>
-                        <p className={styles.year}>2024</p>
+                        <p className={styles.year}>2024 - 2025</p>
                     </div>
                     <p className={styles.text}>
                         Ресурсный центр

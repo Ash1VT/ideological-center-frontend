@@ -14,9 +14,11 @@ const EventInfoContent = ({items, activeItem} : EventInfoContentProps) => {
                                 animate={{ opacity: 1 }}
                                 initial={{ opacity: 0 }}
                                 transition={{ duration: 0.5 }}>
-                        <div className={styles.text}>
-                            <p>{item.text}</p>
-                        </div>
+                        {item.text && 
+                            <div className={styles.text}>
+                                <p>{item.text}</p>
+                            </div>
+                        }
                         {item.image && 
                             <div className={styles.image}>
                                 <img src={item.image}></img>

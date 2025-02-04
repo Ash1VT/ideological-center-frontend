@@ -13,6 +13,8 @@
 
         &.active {
             display: flex;
+            flex-direction: column;
+            row-gap: 50px;
             justify-content: center;
             align-items: center;
             animation: fadeIn 0.5s ease;
@@ -21,6 +23,21 @@
     }
 }
 
+.empty  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 100px;
+
+    h2 {
+        font-family: 'Kanit', sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+        color: #007bff;
+        text-transform: uppercase;
+        text-align: center;
+    }
+}
 
 // Анимация появления контента
 @keyframes fadeIn {

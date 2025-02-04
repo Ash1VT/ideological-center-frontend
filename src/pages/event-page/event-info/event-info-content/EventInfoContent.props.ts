@@ -1,6 +1,6 @@
 export type EventInfoContentItem = {
     id: number,
-    text: string,
+    text?: string,
     image?: string
 }
 

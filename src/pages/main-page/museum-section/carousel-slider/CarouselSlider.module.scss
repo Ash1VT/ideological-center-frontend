@@ -80,8 +80,8 @@
             // object-fit: cover;
             transition: transform 0.3s ease-in, box-shadow 5s ease-in;
             // backface-visibility: hidden;
-            -webkit-font-smoothing: antialiased;
-            image-rendering: optimizeQuality;
+            // -webkit-font-smoothing: antialiased;
+            // image-rendering: optimizeQuality;
             
             &.hover {
                 cursor: pointer;

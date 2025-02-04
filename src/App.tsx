@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Calendar from './pages/events-page/events-calendar/Calendar';
 import styles from './styles/App.module.scss'
 import EventsCard from './pages/events-page/events-calendar/events-card/EventsCard';
@@ -10,7 +10,7 @@ import EventPage from './pages/event-page/EventPage';
 import AppRouter from './AppRouter';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
 
 function App() {
@@ -30,14 +30,14 @@ function App() {
 
     return (
         <YMaps query={{load: "package.full", apikey: process.env.YANDEX_MAPS_API_KEY}}>
-            <HashRouter>
+            <BrowserRouter>
                 <ScrollToTop/>
                 <div className={styles.container}>
-                    <Navbar logo='./images/logo.png' menuItems={navbarMenuItems}/>
+                    <Navbar logo='/images/logo.png' menuItems={navbarMenuItems}/>
                     <AppRouter/>
                     <Footer/>
                 </div>
-            </HashRouter>
+            </BrowserRouter>
         </YMaps>
     );
 }

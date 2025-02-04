@@ -1,12 +1,13 @@
-import { CalendarDayModel } from "../calendar-day/CalendarDay.props"
+import { CalendarDayModel } from "src/models/calendar"
+import { EventModel } from "src/models/events"
 
-export type EventShortModel = {
-    id: number,
-    title: string
-}
+// export type EventShortModel = {
+//     id: number,
+//     title: string
+// }
 
 
 export type EventCardProps = {
     day: CalendarDayModel
-    events: EventShortModel[]
+    events: EventModel[]
 }

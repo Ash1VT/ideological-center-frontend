@@ -7,7 +7,7 @@ const EventHeader = ({event} : EventHeaderProps) => {
     return (
         <div className={styles.container}>
             <div className={styles.info}>
-                <h1>{event.title}</h1>
+                <h1>{event.name}</h1>
                 <div className={styles.date}>
                     <p>{formatDate(event.startDate)} - {formatDate(event.endDate)}</p>
                 </div>

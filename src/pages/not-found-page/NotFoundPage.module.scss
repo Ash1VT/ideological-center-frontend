@@ -1,0 +1,108 @@
+.container {
+    margin-top: 68px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.content {
+    margin: 100px 100px;
+    position: relative;
+}
+
+.background {
+    position: absolute;
+    height: 100px;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    z-index: -1;
+
+    h1 {
+        font-family: 'Maven Pro', sans-serif;
+        color: #ececec;
+        font-weight: 900;
+        font-size: 276px;
+        margin: 0px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+}
+
+.title {
+    h2 {
+        font-family: 'Maven Pro', sans-serif;
+        font-size: 46px;
+        color: #000;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin: 0px;
+        text-align: center;
+    }
+}
+
+.description {
+    p {
+        font-family: 'Maven Pro', sans-serif;
+        font-size: 16px;
+        color: #000;
+        font-weight: 400;
+        text-transform: uppercase;
+        margin-top: 15px;
+        text-align: center;
+    }
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+    a {
+        font-family: 'Maven Pro', sans-serif;
+        font-size: 14px;
+        text-decoration: none;
+        text-transform: uppercase;
+        background: #189cf0;
+        display: inline-block;
+        padding: 16px 38px;
+        border: 2px solid transparent;
+        border-radius: 40px;
+        color: #fff;
+        font-weight: 400;
+        -webkit-transition: 0.2s all;
+        transition: 0.2s all;
+        text-align: center;
+
+        &:hover {
+            background-color: #fff;
+            border-color: #189cf0;
+            color: #189cf0;
+        }
+    }
+}
+
+@media only screen and (max-width: 580px) {
+    .background {
+        h1 {
+            font-size: 162px;
+        }
+    }
+    .title {
+        h2 {
+            font-size: 22px;
+        }
+    }
+
+    .description {
+        p {
+            font-size: 12px;
+        }
+    }
+  }

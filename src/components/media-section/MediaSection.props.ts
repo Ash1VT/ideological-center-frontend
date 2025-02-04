@@ -1,9 +1,16 @@
-import { MediaCategoryModel, MediaModel } from "src/redux/models/media"
+import { MediaCategoryModel, MediaModel } from "src/models/media"
 
 export type MediaSectionProps = {
     categoriesTitle: string
     categories: MediaCategoryModel[]
+    selectedCategoryId?: number
     media: MediaModel[]
-    onMediaClick: (id: number) => void
+    showMoreButtonVisible: boolean
+    searchValue: string
+    isCategoriesLoading: boolean
+    isMediaLoading: boolean
+    onMediaCategoryClick: (id: number) => Promise<void>
+    onMediaClick: (id: number) => Promise<void>
+    onMediaSearch: (value: string) => Promise<void>
     onShowMore: () => Promise<void>
 }

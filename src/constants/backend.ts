@@ -1,0 +1,1 @@
+export const backendUrl = 'http://159.203.126.220/api/v1';

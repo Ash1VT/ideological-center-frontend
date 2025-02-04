@@ -1,6 +1,6 @@
 export type ImageSliderModel = {
     id: number
-    imageUrl: string
+    imageUrl?: string
 }
 
 export type CubeImageSliderProps = {

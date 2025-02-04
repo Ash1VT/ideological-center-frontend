@@ -1,4 +1,4 @@
-import { MuseumSectionModel } from "src/redux/models/museum"
+import { MuseumSectionModel } from "src/models/museum"
 
 export type MuseumSectionsListProps = {
     title: string

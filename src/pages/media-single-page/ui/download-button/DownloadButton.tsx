@@ -1,12 +1,15 @@
 import React from 'react'
 import styles from './DownloadButton.module.scss'
 import { DownloadButtonProps } from './DownloadButton.props'
+import classnames from 'classnames'
 
 const DownloadButton = ({name, title, link} : DownloadButtonProps) => {
+    const buttonClass = link ? classnames(styles.button) : classnames(styles.button, styles.disabled)
+
     return (
-        <div className={styles.button}>
-            <a href={link} target='_blank' download={name}>{title}</a>
-        </div>
+        <button className={buttonClass} disabled={!link}>
+            <a href={link} target='_blank' download={name} >{title}</a>
+        </button>
     )
 }
 

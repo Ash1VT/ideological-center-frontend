@@ -18,7 +18,7 @@ const EventCard = ({event} : EventCardProps) => {
     return (
         <div className={styles.container} onClick={handleClick}>
             <div className={styles.image}>
-                <img src={event.image}></img>
+                <img src={event.imageUrl}></img>
             </div>
             <div className={styles.content}>
                 <div className={styles.info}>
@@ -32,7 +32,7 @@ const EventCard = ({event} : EventCardProps) => {
                     </div>
                 </div>
                 <div className={styles.title}>
-                    <h3>{event.title}</h3>
+                    <h3>{event.name}</h3>
                 </div>
             </div>
             

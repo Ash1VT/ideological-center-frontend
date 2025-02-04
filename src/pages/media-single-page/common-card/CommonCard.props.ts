@@ -1,4 +1,4 @@
-import { MediaModel } from "src/redux/models/media"
+import { MediaModel } from "src/models/media"
 
 export type CommonCardProps = {
     document: MediaModel

@@ -7,7 +7,7 @@ const CommonCard = ({document, descriptionTitle, buttonLabel} : CommonCardProps)
     return (
         <div className={styles.container}>
             <div className={styles.image}>
-                <img src={document.image}></img>
+                <img src={document.imageUrl} alt={document.name}></img>
             </div>
             <div className={styles.title}>
                 <p>{descriptionTitle}</p>
@@ -15,7 +15,7 @@ const CommonCard = ({document, descriptionTitle, buttonLabel} : CommonCardProps)
             <div className={styles.description}>
                 <p>{document.description}</p>
             </div>
-            <DownloadButton name={document.name} title={buttonLabel} link={document.link}/>
+            <DownloadButton name={document.name} title={buttonLabel} link={document.url}/>
         </div>
     )
 }

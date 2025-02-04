@@ -11,7 +11,7 @@ const MediaCard = ({media, onMediaClick} : MediaCardProps) => {
     return (
         <div className={styles.container} onClick={handleClick}>
             <div className={styles.image}>
-                <img src={media.image}></img>
+                <img src={media.imageUrl}></img>
             </div>
             <div className={styles.title}>
                 <p>{media.name}</p>

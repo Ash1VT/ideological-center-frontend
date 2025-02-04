@@ -3,6 +3,7 @@ import { backend } from "./axios"
 import { EventParser } from "src/parsers/EventParser"
 import { PaginatedModel } from "src/models/paginate"
 import { formatDateYMD } from "src/utils/date"
+import axios from "axios"
 
 export class EventService {
 

@@ -1,6 +1,4 @@
 {
-  "name": "my-app",
-  "homepage": "https://ash1vt.github.io/ideological-center-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

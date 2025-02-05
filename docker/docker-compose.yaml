@@ -1,0 +1,18 @@
+name: 'ideological-frontend'
+
+services:
+  app:
+    build:
+      context: ../
+      dockerfile: ./docker/app/Dockerfile
+    container_name: ideological-app-frontend
+    volumes:
+      - './:/app'
+      - '/app/node_modules'
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - PUBLIC_URL=.
+      - YANDEX_MAPS_API_KEY=${YANDEX_MAPS_API_KEY}

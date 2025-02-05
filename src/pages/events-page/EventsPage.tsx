@@ -93,7 +93,7 @@ const EventsPage = () => {
 
     return (
         <div className={styles.container}>
-            <PageHeader title='Афиша мероприятий' image='./images/pages/events.jpg'/>
+            <PageHeader title='Афиша мероприятий' image='/images/pages/events.jpg'/>
             <EventsMenu items={eventsMenuItems} selectedItem={selectedItem} onItemSelected={setSelectedItem}/>
             <Loader isLoading={events.length === 0 && isLoading}>
                 <EventsMenuContent isLoading={events.length !== 0 && isLoading} 

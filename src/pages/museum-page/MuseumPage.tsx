@@ -28,7 +28,7 @@ const MuseumPage = () => {
 
     return (
         <div className={styles.container}>
-            <PageHeader title='Музей' image='./images/museum/museum.jpeg'/>
+            <PageHeader title='Музей' image='/images/museum/museum.jpeg'/>
             <div className={styles.content}>
                 <Loader isLoading={isLoading}>
                     {activeItem ? (

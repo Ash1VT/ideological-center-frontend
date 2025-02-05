@@ -29,7 +29,7 @@ const EventPage = () => {
 
     return (
         <div className={styles.container}>
-            <PageHeader title='Афиша мероприятий' image='./images/pages/events.jpg'/>
+            <PageHeader title='Афиша мероприятий' image='/images/pages/events.jpg'/>
             <div className={styles.event}>
                 <Loader isLoading={isLoading}>
                     {event &&

@@ -8,7 +8,7 @@ import CroppedBorder from './ui/cropped-border/CroppedBorder'
 const AboutUsPage = () => {
     return (
         <div className={styles.container}>
-            <PageHeader title='О нас' image='./images/about/about_us.png'/>
+            <PageHeader title='О нас' image='/images/about/about_us.png'/>
             <div className={styles.content}>
                 <div className={styles.about}>
                     <CroppedBorder className={styles.border}/>

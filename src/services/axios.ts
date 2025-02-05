@@ -2,7 +2,7 @@ import axios from "axios";
 import { backendUrl } from "src/constants/backend";
 
 export const backend = axios.create({
-    withCredentials: true,
+    withCredentials: false,
     baseURL: backendUrl,
 })
 

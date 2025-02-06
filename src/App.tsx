@@ -29,7 +29,7 @@ function App() {
     ]
 
     return (
-        <YMaps query={{load: "package.full", apikey: process.env.YANDEX_MAPS_API_KEY}}>
+        <YMaps query={{load: "package.full", apikey: process.env.REACT_APP_YANDEX_MAPS_API_KEY}}>
             <BrowserRouter>
                 <ScrollToTop/>
                 <div className={styles.container}>

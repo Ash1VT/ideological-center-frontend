@@ -1,1 +1,1 @@
-export const backendUrl = process.env.BACKEND_URL || 'http://localhost:8000/api/v1';
+export const backendUrl = process.env.REACT_APP_YANDEX_MAPS_API_KEY || 'http://localhost:8000/api/v1';

@@ -7,6 +7,7 @@ export default class PageParser {
             perPage: data.per_page,
             numberOfPages: data.number_of_pages,
             totalCount: data.total_count,
+            totalFilteredCount: data.total_filtered_count,
             items: parsedItems
         }
     }

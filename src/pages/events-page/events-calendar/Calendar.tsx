@@ -16,7 +16,8 @@ const Calendar = ({monthsData, selectedDay, selectedMonth, selectedYear, events,
         return events.find((event) => {
             return event.year === selectedYear
         })?.events
-    }, [events])
+    }, [events, selectedYear])
+    // console.log(eventsList)
 
     const getEventsCardComponent = useCallback(() => {
         if (!selectedDay) {

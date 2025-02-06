@@ -3,5 +3,6 @@ export interface PaginatedModel<T> {
     perPage: number
     numberOfPages: number
     totalCount: number
+    totalFilteredCount: number
     items: T[]
 }

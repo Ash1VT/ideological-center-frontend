@@ -28,7 +28,7 @@ const MediaPage = () => {
 
     const {isLoading: isMediaLoading, data: media, fetchAdditional: fetchAdditionalMedia} = useFetchData<MediaModel[]>(async () => {
         const data = await MediaService.retrieveMedia(page, perPage, selectedCategoryId, mediaTypeSlug, search)
-        setTotalMediaCount(data.totalCount)
+        setTotalMediaCount(data.totalFilteredCount)
         return data.items
     }, [mediaTypeSlug, selectedCategoryId, search], {isArrayData: true})
 

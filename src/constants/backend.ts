@@ -1,3 +1,1 @@
-import { env } from "process";
-
-export const backendUrl = env.BACKEND_URL || 'http://localhost:8000/api/v1';
+export const backendUrl = process.env.BACKEND_URL || 'http://localhost:8000/api/v1';

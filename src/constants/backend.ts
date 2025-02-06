@@ -1,2 +1,3 @@
-// export const backendUrl = 'http://159.203.126.220/server/api/v1';
-export const backendUrl = 'http://localhost:8000/api/v1';
+import { env } from "process";
+
+export const backendUrl = env.BACKEND_URL || 'http://localhost:8000/api/v1';

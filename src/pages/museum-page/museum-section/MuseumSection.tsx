@@ -3,6 +3,7 @@ import { MuseumSectionProps } from './MuseumSection.props'
 import styles from './MuseumSection.module.scss'
 import classnames from 'classnames'
 import { MuseumSectionModel } from 'src/models/museum'
+import { PhotoView } from 'react-photo-view'
 
 const MuseumSection = ({section} : MuseumSectionProps) => {
 
@@ -30,7 +31,9 @@ const MuseumSection = ({section} : MuseumSectionProps) => {
                 }
                 <div className={getInfoClass(section)}>
                     <div className={styles.image}>
-                        <img src={section.imageUrl} alt="Museum"/>
+                        <PhotoView key={section.id} src={section.imageUrl}>
+                            <img src={section.imageUrl} alt="Museum"/>
+                        </PhotoView>
                     </div>
                     {section.description && 
                         <div className={styles.description}>

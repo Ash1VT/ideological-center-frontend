@@ -52,7 +52,10 @@ const EventForm = ({eventId}: EventFormProps) => {
                     validationSchema={validationSchema}
                     validateOnChange={false}
                     validateOnBlur={false}
-                    onSubmit={onSubmit}>
+                    onSubmit={(values, { resetForm }) => {
+                        onSubmit(values); 
+                        resetForm();
+                    }}>
                 {({values, errors, setFieldValue, submitForm}) => (
                     <Form>
                         <div className={styles.container}>

@@ -9,6 +9,7 @@ import CustomDateInput from 'src/components/ui/custom-inputs/custom-date-input/C
 import CustomPhoneInput from 'src/components/ui/custom-inputs/custom-phone-input/CustomPhoneInput'
 import { EventApplicationService } from 'src/services/EventApplicationService'
 import { EventFormProps } from './EventForm.props'
+import { addErrorNotification, addSuccessNotification } from 'src/utils/notifications'
 
 interface FormValues {
     fio: string 
@@ -38,7 +39,11 @@ const EventForm = ({eventId}: EventFormProps) => {
     })
 
     const onSubmit = async (values: FormValues) => {
-        await EventApplicationService.createEventApplication(eventId, values)
+        EventApplicationService.createEventApplication(eventId, values).then(() => {
+            addSuccessNotification('Заявка успешно отправлена')
+        }).catch(() => {
+            addErrorNotification('Произошла ошибка')
+        })
     }
 
     return (

@@ -12,6 +12,8 @@ import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import { BrowserRouter, HashRouter } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
+import { ReactNotifications } from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
 
 function App() {
     const navbarMenuItems = [
@@ -31,6 +33,7 @@ function App() {
     return (
         <YMaps query={{load: "package.full", apikey: process.env.REACT_APP_YANDEX_MAPS_API_KEY}}>
             <BrowserRouter>
+                <ReactNotifications/>
                 <ScrollToTop/>
                 <div className={styles.container}>
                     <Navbar logo='/images/logo.png' menuItems={navbarMenuItems}/>

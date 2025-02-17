@@ -21,7 +21,7 @@ const CubeImageSlider = ({images, onSlideSelected} : CubeImageSliderProps) => {
                   }}
                 modules={[Navigation, Pagination, EffectCube, Autoplay]}
                 autoplay={{
-                    delay: 30000,
+                    delay: 180000,
                     disableOnInteraction: false
                 }}
                 navigation

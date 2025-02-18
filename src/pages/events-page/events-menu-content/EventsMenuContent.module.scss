@@ -50,3 +50,16 @@
         transform: translateY(0);
     }
 }
+
+@media screen and (max-width: 1665px) {
+    .container {
+        padding: 80px 20px;
+
+        .content {
+
+            &.active {
+                margin: 0 50px;
+            }
+        }
+    }
+}

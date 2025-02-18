@@ -92,3 +92,39 @@
         text-align: center;
     }
 }
+
+@media screen and (max-width: 743px) {
+
+    .title {
+        text-align: center;
+        h1, h2, h3 {
+            font-size: 30px;
+        }
+    }
+
+    .description {
+        p {
+            font-size: 20px;
+        }
+    }
+
+    .section {
+        padding: 100px 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .title {
+        h1, h2, h3 {
+            font-size: 20px;
+        }
+    }
+    .description {
+        p {
+            font-size: 15px;
+        }
+    }
+    .section {
+        padding: 100px 20px;
+    }
+}

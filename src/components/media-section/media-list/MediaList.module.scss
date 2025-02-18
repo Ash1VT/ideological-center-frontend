@@ -30,6 +30,7 @@
     @media screen and (max-width: 750px) {
         & {
             grid-template-columns: 1fr;
+            justify-items: center;
         }
     }
 }

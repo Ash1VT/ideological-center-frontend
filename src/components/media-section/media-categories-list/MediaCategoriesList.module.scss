@@ -7,7 +7,6 @@
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 30px;
     flex-wrap: wrap;
-    align-items: flex-start;
 
     @media screen and (max-width: 1400px) {
         & {

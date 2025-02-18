@@ -3,7 +3,9 @@
     padding: 10px;
     border: 1px solid #eef0ef;
     text-align: center;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: border-color 0.3s ease-in;
 
     p {

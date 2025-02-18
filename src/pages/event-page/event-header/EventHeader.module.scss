@@ -65,3 +65,11 @@
 //         }
 //     }
 // }
+
+@media screen and (max-width: 715px) {
+    .info {
+        h1 {
+            font-size: 25px;
+        }
+    }
+}
